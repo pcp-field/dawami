@@ -1,0 +1,58 @@
+name: تحديث عطلات سلطنة عمان
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+  push:
+    paths:
+      - ".github/workflows/update-holidays.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-oman-holidays
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: جلب عطلات عمان
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+          (async () => {
+            const now = new Date();
+            const years = [now.getUTCFullYear() - 1, now.getUTCFullYear(), now.getUTCFullYear() + 1];
+            const output = {
+              updatedAt: now.toISOString(),
+              source: "https://nagerholidays.com/api",
+              country: "OM",
+              note: "التواريخ الهجرية تبقى خاضعة للإعلان الرسمي في سلطنة عمان",
+              years: {}
+            };
+            for (const year of years) {
+              const response = await fetch(`https://nagerholidays.com/api/v4/Holidays/OM/${year}`);
+              if (!response.ok) throw new Error(`Holiday API ${year}: ${response.status}`);
+              const rows = await response.json();
+              output.years[year] = rows
+                .filter(x => x && x.date)
+                .map(x => ({ date: x.date, name: x.name || "", localName: x.localName || "" }));
+            }
+            fs.writeFileSync("holidays-om.json", JSON.stringify(output, null, 2) + "\n");
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+      - name: حفظ التحديث عند وجود تغيير
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add holidays-om.json
+          git diff --cached --quiet && exit 0
+          git commit -m "تحديث عطلات سلطنة عمان"
+          git push
