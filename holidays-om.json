@@ -1,7 +1,381 @@
 {
-  "updatedAt": null,
-  "source": "https://nagerholidays.com/api",
+  "updatedAt": "2026-08-28T22:39:15.076Z",
+  "source": "Google Calendar - Holidays in Oman",
   "country": "OM",
-  "note": "يُحدّث تلقائيًا عبر GitHub Actions",
-  "years": {}
+  "note": "التواريخ الهجرية تبقى خاضعة للإعلان الرسمي في سلطنة عمان",
+  "years": {
+    "2025": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year",
+        "localName": ""
+      },
+      {
+        "date": "2025-01-12",
+        "name": "Sultan’s Accession Day",
+        "localName": ""
+      },
+      {
+        "date": "2025-01-27",
+        "name": "Isra and Mi'raj",
+        "localName": ""
+      },
+      {
+        "date": "2025-01-30",
+        "name": "Isra and Mi'raj Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-03-01",
+        "name": "Ramadan Start",
+        "localName": ""
+      },
+      {
+        "date": "2025-03-29",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-03-30",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr",
+        "localName": ""
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-04-03",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Eid al-Adha",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-07",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-08",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-26",
+        "name": "Muharram Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-06-27",
+        "name": "Muharram",
+        "localName": ""
+      },
+      {
+        "date": "2025-09-05",
+        "name": "The Prophet's Birthday",
+        "localName": ""
+      },
+      {
+        "date": "2025-09-07",
+        "name": "The Prophet's Birthday Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-11-20",
+        "name": "National Day",
+        "localName": ""
+      },
+      {
+        "date": "2025-11-21",
+        "name": "National Day Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-11-26",
+        "name": "National Day Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2025-11-27",
+        "name": "National Day Holiday",
+        "localName": ""
+      }
+    ],
+    "2026": [
+      {
+        "date": "2026-01-01",
+        "name": "New Year",
+        "localName": ""
+      },
+      {
+        "date": "2026-01-15",
+        "name": "Sultan’s Accession Day",
+        "localName": ""
+      },
+      {
+        "date": "2026-01-18",
+        "name": "Isra and Mi'raj",
+        "localName": ""
+      },
+      {
+        "date": "2026-02-19",
+        "name": "Ramadan Start",
+        "localName": ""
+      },
+      {
+        "date": "2026-03-19",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Eid al-Fitr",
+        "localName": ""
+      },
+      {
+        "date": "2026-03-21",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-05-26",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha",
+        "localName": ""
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-05-29",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-05-30",
+        "name": "Eid al-Adha Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Muharram",
+        "localName": ""
+      },
+      {
+        "date": "2026-06-18",
+        "name": "Muharram Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2026-08-27",
+        "name": "The Prophet's Birthday",
+        "localName": ""
+      },
+      {
+        "date": "2026-11-25",
+        "name": "National Day",
+        "localName": ""
+      },
+      {
+        "date": "2026-11-26",
+        "name": "National Day Holiday",
+        "localName": ""
+      }
+    ],
+    "2027": [
+      {
+        "date": "2027-01-01",
+        "name": "New Year",
+        "localName": ""
+      },
+      {
+        "date": "2027-01-06",
+        "name": "Isra and Mi'raj (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Ramadan Start (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-03-12",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-03-13",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-05-18",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-05-19",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-05-20",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-06-06",
+        "name": "Muharram (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-08-15",
+        "name": "The Prophet's Birthday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2027-11-20",
+        "name": "National Day",
+        "localName": ""
+      },
+      {
+        "date": "2027-11-21",
+        "name": "National Day Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2027-12-26",
+        "name": "Isra and Mi'raj (tentative)",
+        "localName": ""
+      }
+    ],
+    "2028": [
+      {
+        "date": "2028-01-01",
+        "name": "New Year",
+        "localName": ""
+      },
+      {
+        "date": "2028-01-28",
+        "name": "Ramadan Start (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-02-27",
+        "name": "Eid al-Fitr (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-03-01",
+        "name": "Eid al-Fitr Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Eid al-Adha (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-05-06",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-05-07",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-05-08",
+        "name": "Eid al-Adha Holiday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Muharram (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-08-03",
+        "name": "The Prophet's Birthday (tentative)",
+        "localName": ""
+      },
+      {
+        "date": "2028-11-20",
+        "name": "National Day",
+        "localName": ""
+      },
+      {
+        "date": "2028-11-21",
+        "name": "National Day Holiday",
+        "localName": ""
+      },
+      {
+        "date": "2028-12-14",
+        "name": "Isra and Mi'raj (tentative)",
+        "localName": ""
+      }
+    ]
+  }
 }
