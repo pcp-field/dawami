@@ -1,19 +1,39 @@
 {
-  "name":"دوامي — مساعد المناوبات الذكي",
-  "short_name":"دوامي",
-  "description":"تطبيق عربي لإدارة المناوبات والإجازات والرؤى الذكية",
-  "lang":"ar",
-  "dir":"rtl",
-  "start_url":"./",
-  "scope":"./",
-  "display":"standalone",
-  "orientation":"any",
-  "background_color":"#080c13",
-  "theme_color":"#0a0e16",
-  "categories":["productivity","utilities"],
-  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
-  "shortcuts":[
-    {"name":"التقويم","short_name":"التقويم","url":"./#calendar","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]},
-    {"name":"الإجازات","short_name":"الإجازات","url":"./#leaves","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]}
+  "name": "دوامي — دوامك وإجازتك بوضوح",
+  "short_name": "دوامي",
+  "description": "اعرف هل أنت مداوم وكم باقي على إجازتك من أول نظرة",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080c13",
+  "theme_color": "#0a0e16",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "التقويم",
+      "short_name": "التقويم",
+      "url": "./#calendar",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
   ]
 }
