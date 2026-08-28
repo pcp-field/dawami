@@ -35,7 +35,7 @@ function remaining(ms){var m=Math.max(0,Math.floor(ms/60000)),d=Math.floor(m/144
 function textFor(e){if(!e)return"إجازة";var t=e.type;if(t==="night")return"دوام ليلي";if(t==="off")return"إجازة";if(t==="annual"||t==="leave"||t==="comp"||t==="unpaid"||t==="emergency")return"إجازة مسجلة";if(t==="sick")return"إجازة مرضية";if(t==="training")return"تدريب";if(t==="overtime")return"دوام إضافي";return"دوام"}
 function classFor(e){if(!e)return"off";if(e.type==="night")return"night";if(e.type==="off")return"off";if(e.type==="sick")return"sick";if(["annual","leave","comp","unpaid","emergency"].indexOf(e.type)>=0)return"leave";return"work"}
 function lastWork(k){for(var i=1;i<500;i++){var d=add(k,-i),ev=C.eventsForDate(S,d).filter(C.isWork);if(ev.length){var e=ev[ev.length-1];return C.interval(d,e,tz)}}return null}
-function exactBlock(block){if(!block)return null;var before=lastWork(block.start),next=C.nextShift(S,C.zonedEpoch(block.start,"00:00",tz),tz);return{start:before?before.end:C.zonedEpoch(block.start,"00:00",tz),end:next?next.start:C.zonedEpoch(add(block.end,1),"00:00",tz),next:next}}
+function exactBlock(block){if(!block)return null;var before=lastWork(block.start),next=C.nextShift(S,C.zonedEpoch(block.returnDate,"00:00",tz),tz);return{start:before?before.end:C.zonedEpoch(block.start,"00:00",tz),end:next?next.start:C.zonedEpoch(add(block.end,1),"00:00",tz),next:next}}
 function toast(msg){var e=$("#toast");e.textContent=msg;e.classList.add("show");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("show")},1800)}
 function open(id){$("#"+id).classList.add("open")}
 function close(id){$("#"+id).classList.remove("open")}
