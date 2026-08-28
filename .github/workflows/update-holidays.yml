@@ -20,33 +20,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-      - name: جلب عطلات عمان
+      - name: جلب تقويم عطلات عمان
         run: |
+          curl --fail --silent --show-error --location --retry 3             "https://calendar.google.com/calendar/ical/en.om%23holiday%40group.v.calendar.google.com/public/basic.ics"             --output /tmp/oman-holidays.ics
           node <<'NODE'
           const fs = require("fs");
-          (async () => {
-            const now = new Date();
-            const years = [now.getUTCFullYear() - 1, now.getUTCFullYear(), now.getUTCFullYear() + 1];
-            const output = {
-              updatedAt: now.toISOString(),
-              source: "https://nagerholidays.com/api",
-              country: "OM",
-              note: "التواريخ الهجرية تبقى خاضعة للإعلان الرسمي في سلطنة عمان",
-              years: {}
-            };
-            for (const year of years) {
-              const response = await fetch(`https://nagerholidays.com/api/v4/Holidays/OM/${year}`);
-              if (!response.ok) throw new Error(`Holiday API ${year}: ${response.status}`);
-              const rows = await response.json();
-              output.years[year] = rows
-                .filter(x => x && x.date)
-                .map(x => ({ date: x.date, name: x.name || "", localName: x.localName || "" }));
+          const text = fs.readFileSync("/tmp/oman-holidays.ics", "utf8").replace(/\r?\n[ \t]/g, "");
+          const now = new Date();
+          const minYear = now.getUTCFullYear() - 1;
+          const maxYear = now.getUTCFullYear() + 2;
+          const years = {};
+          for (let year = minYear; year <= maxYear; year++) years[year] = [];
+          for (const block of text.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/g) || []) {
+            const dateMatch = block.match(/DTSTART(?:;VALUE=DATE[^:]*)?:(\d{4})(\d{2})(\d{2})/);
+            const nameMatch = block.match(/SUMMARY(?:;[^:]*)?:(.+)/);
+            if (!dateMatch || !nameMatch) continue;
+            const year = Number(dateMatch[1]);
+            if (year < minYear || year > maxYear) continue;
+            const date = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+            const name = nameMatch[1].replace(/\\,/g, ",").replace(/\\n/g, " ").trim();
+            if (!years[year].some(item => item.date === date && item.name === name)) {
+              years[year].push({ date, name, localName: "" });
             }
-            fs.writeFileSync("holidays-om.json", JSON.stringify(output, null, 2) + "\n");
-          })().catch(error => { console.error(error); process.exit(1); });
+          }
+          const count = Object.values(years).reduce((sum, list) => sum + list.length, 0);
+          if (!count) throw new Error("لم يتم العثور على عطلات في التقويم");
+          for (const list of Object.values(years)) list.sort((a, b) => a.date.localeCompare(b.date));
+          const output = {
+            updatedAt: now.toISOString(),
+            source: "Google Calendar - Holidays in Oman",
+            country: "OM",
+            note: "التواريخ الهجرية تبقى خاضعة للإعلان الرسمي في سلطنة عمان",
+            years
+          };
+          fs.writeFileSync("holidays-om.json", JSON.stringify(output, null, 2) + "\n");
+          console.log(`تم حفظ ${count} عطلة`);
           NODE
       - name: حفظ التحديث عند وجود تغيير
         run: |
