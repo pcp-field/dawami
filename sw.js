@@ -1,5 +1,5 @@
-const CACHE="dawami-simple-v5-4";
-const ASSETS=["./","./index.html","./simple.css?v=5.4","./core.js?v=5.4","./simple.js?v=5.4","./manifest.webmanifest?v=5.4","./icon.svg","./holidays-om.json"];
+const CACHE="dawami-v6";
+const ASSETS=["./","./index.html","./dawami-v6.css","./core.js?v=6.0","./dawami-v6.js","./manifest.webmanifest?v=6.0","./icon.svg","./holidays-om.json"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",e=>{
