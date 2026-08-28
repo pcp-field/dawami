@@ -92,6 +92,6 @@ function bind(){
  $("#showSetup").onclick=function(){buildSetup();open("setupModal")};$("#finishSetup").onclick=finishSetup;$("#exportData").onclick=download;$("#importData").onchange=function(){var f=this.files[0];if(!f)return;var reader=new FileReader();reader.onload=function(){try{var d=JSON.parse(reader.result);if(!d.schedule){toast("الملف غير صحيح");return}data=normalize(d);S=data.schedule;save();renderAll();toast("تمت استعادة بياناتك")}catch(e){toast("الملف غير صحيح")}};reader.readAsText(f)};
  var x=0;$("#calendarGrid").addEventListener("touchstart",function(e){x=e.changedTouches[0].clientX},{passive:true});$("#calendarGrid").addEventListener("touchend",function(e){var diff=e.changedTouches[0].clientX-x;if(Math.abs(diff)>55)moveMonth(diff>0?1:-1)},{passive:true})
 }
-function init(){bind();renderAll();setInterval(renderCountdown,1000);if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js?v=4").catch(function(){});scheduleNotify();if(!data.onboarded){buildSetup();open("setupModal")}}
+function init(){bind();renderAll();setInterval(renderCountdown,1000);if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js?v=4.1").catch(function(){});scheduleNotify();if(!data.onboarded){buildSetup();open("setupModal")}}
 init();
 })();
