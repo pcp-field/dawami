@@ -39,6 +39,7 @@
   }
   function isWork(e){return !!e&&WORK_TYPES.indexOf(e.type)>=0}
   function isRest(e){return !e||REST_TYPES.indexOf(e.type)>=0}
+  function eventHours(e,fallback){e=normalizeEvent(e);var direct=Number(e.hours);if(isFinite(direct)&&direct>0)return direct;if(!e.start||!e.end)return Number(fallback)||0;var a=e.start.split(":").map(Number),b=e.end.split(":").map(Number),start=(a[0]||0)*60+(a[1]||0),end=(b[0]||0)*60+(b[1]||0);if(end<=start)end+=1440;var value=(end-start)/60;return value>0&&value<=24?value:(Number(fallback)||0)}
   function leaveOn(data,k){
     var list=(data&&data.leaves)||[];
     for(var i=list.length-1;i>=0;i--){var l=list[i];if(k>=l.start&&k<=l.end)return l}
@@ -115,8 +116,8 @@
     var n=0;for(var d=toDay(a),e=toDay(b);d<e;d++)if(eventsForDate(data,fromDay(d)).some(isWork))n++;return n
   }
   function monthStats(data,y,m,hours){
-    var total=daysInMonth(y,m),out={workDays:0,offDays:0,leaveDays:0,night:0,day:0,overtime:0,hours:0};
-    for(var d=1;d<=total;d++){var k=y+"-"+pad(m)+"-"+pad(d),ev=eventsForDate(data,k),worked=ev.some(isWork),leave=leaveOn(data,k);if(worked)out.workDays++;else out.offDays++;if(leave)out.leaveDays+=(leave.half?.5:1);ev.forEach(function(e){if(e.type==="night")out.night++;if(e.type==="day"||e.type==="work")out.day++;if(e.type==="overtime")out.overtime++;if(isWork(e)){var sh=Number(e.hours);out.hours+=isFinite(sh)&&sh>0?sh:(hours||12)}})}
+    var total=daysInMonth(y,m),out={workDays:0,offDays:0,leaveDays:0,night:0,day:0,overtime:0,overtimeHours:0,hours:0};
+    for(var d=1;d<=total;d++){var k=y+"-"+pad(m)+"-"+pad(d),ev=eventsForDate(data,k),worked=ev.some(isWork),leave=leaveOn(data,k);if(worked)out.workDays++;else out.offDays++;if(leave)out.leaveDays+=(leave.half?.5:1);ev.forEach(function(e){if(e.type==="night")out.night++;if(e.type==="day"||e.type==="work")out.day++;if(e.type==="overtime")out.overtime++;if(isWork(e)){var sh=eventHours(e,hours||12);out.hours+=sh;if(e.type==="overtime")out.overtimeHours+=sh}})}
     return out
   }
   function annualLeaveUsed(data,year,deductRest){
@@ -142,5 +143,5 @@
     for(var i=0;i<days;i++){var k=addDays(from,i),ok=predicate(eventsForDate(data,k),k);if(ok){if(!current)start=k;current++;if(current>best){best=current;bestStart=start}}else current=0}
     return{length:best,start:bestStart,end:addDays(bestStart,Math.max(0,best-1))}
   }
-  return{DAY:DAY,presets:presets,clone:clone,repeat:repeat,toDay:toDay,fromDay:fromDay,addDays:addDays,diffDays:diffDays,range:range,daysInMonth:daysInMonth,monthKeyParts:monthKeyParts,normalizeEvent:normalizeEvent,isWork:isWork,isRest:isRest,leaveOn:leaveOn,baseEvents:baseEvents,eventsForDate:eventsForDate,primaryEvent:primaryEvent,zonedParts:zonedParts,dateKeyAt:dateKeyAt,zonedEpoch:zonedEpoch,interval:interval,nextShift:nextShift,nowStatus:nowStatus,restBlock:restBlock,workDaysBetween:workDaysBetween,monthStats:monthStats,annualLeaveUsed:annualLeaveUsed,bestLeave:bestLeave,longestStreak:longestStreak};
+  return{DAY:DAY,presets:presets,clone:clone,repeat:repeat,toDay:toDay,fromDay:fromDay,addDays:addDays,diffDays:diffDays,range:range,daysInMonth:daysInMonth,monthKeyParts:monthKeyParts,normalizeEvent:normalizeEvent,isWork:isWork,isRest:isRest,eventHours:eventHours,leaveOn:leaveOn,baseEvents:baseEvents,eventsForDate:eventsForDate,primaryEvent:primaryEvent,zonedParts:zonedParts,dateKeyAt:dateKeyAt,zonedEpoch:zonedEpoch,interval:interval,nextShift:nextShift,nowStatus:nowStatus,restBlock:restBlock,workDaysBetween:workDaysBetween,monthStats:monthStats,annualLeaveUsed:annualLeaveUsed,bestLeave:bestLeave,longestStreak:longestStreak};
 });
