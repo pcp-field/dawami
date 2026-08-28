@@ -78,3 +78,26 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .quick{grid-template-columns:repeat(4,minmax(0,1fr))}.quick .green b{color:var(--green)}
 @media(max-width:700px){.quick{grid-template-columns:1fr 1fr}.quick article{min-height:108px}.quick article:last-child{grid-column:auto}}
 @media(max-width:390px){.quick{grid-template-columns:1fr 1fr}}
+
+
+/* Practical home refinements — v5.4 */
+.settings-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.countdown-parts{direction:ltr;display:flex;align-items:center;justify-content:flex-end;gap:9px;font-variant-numeric:tabular-nums}
+.countdown-parts span{min-width:62px;padding:8px 10px;border:1px solid rgba(255,255,255,.12);border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.07)}
+.countdown-parts b{font-size:24px;line-height:1}.countdown-parts span small{margin:5px 0 0;font-size:8px;font-weight:800;opacity:.68}.countdown-parts i{font-style:normal;font-size:18px;font-weight:900;opacity:.45}.countdown-parts.empty{display:block;font-size:16px;font-weight:850}
+.bottom-nav svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.bottom-nav svg .fill{fill:currentColor;stroke:none}
+@media(max-width:700px){
+ .shell{padding-top:max(58px,calc(env(safe-area-inset-top) + 12px))}
+ .top{height:58px}.logo-mark{width:43px;height:43px}.logo b{font-size:20px}
+ .status{min-height:238px;padding:22px 18px}.status h1{font-size:29px;margin-top:11px}.status p{max-width:270px;line-height:1.7}
+ .ring{width:82px;height:82px}.ring:before{width:61px;height:61px}.ring b{font-size:21px}.ring small{font-size:7px}
+ .count{margin-top:17px}.countdown-parts{gap:5px}.countdown-parts span{min-width:53px;padding:7px 6px;border-radius:12px}.countdown-parts b{font-size:20px}.countdown-parts i{font-size:14px}
+ .quick article{min-height:96px;padding:13px 12px}.quick b{margin-top:8px}.quick span{margin-top:4px}
+ .next-days{margin-top:11px}.strip{padding-inline:1px;scroll-padding-inline:1px;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}.strip-day{min-height:105px}
+ .bottom-nav{height:70px;border-radius:22px}.bottom-nav button{min-height:47px}.bottom-nav button span{height:24px;margin-bottom:2px}
+}
+@media(max-width:390px){
+ .shell{padding-top:max(54px,calc(env(safe-area-inset-top) + 10px))}
+ .status{min-height:228px}.status h1{font-size:26px}.ring{width:72px;height:72px}.ring:before{width:53px;height:53px}
+ .countdown-parts span{min-width:48px}.countdown-parts b{font-size:18px}
+}
