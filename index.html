@@ -6,16 +6,16 @@
 <meta name="theme-color" content="#080b11">
 <meta name="description" content="دوامي — اعرف متى تداوم وكم باقي على إجازتك">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest?v=4.6">
+<link rel="manifest" href="manifest.webmanifest?v=5.0">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="simple.css?v=4.6">
+<link rel="stylesheet" href="simple.css?v=5.0">
 <title>دوامي — دوامك وإجازتك بوضوح</title>
 </head>
 <body>
 <main class="shell">
 <header class="top">
   <div class="logo"><span class="logo-mark">د</span><span><b>دوامي</b><small>دوامك وإجازتك بوضوح</small></span></div>
-  <div class="top-actions"><button class="icon" id="themeBtn" aria-label="تغيير المظهر">☀</button><button class="icon" data-open-page="settings" aria-label="الإعدادات">⚙</button></div>
+  <div class="top-actions"><button class="icon theme-icon" id="themeBtn" aria-label="تغيير المظهر"><span aria-hidden="true"></span></button><button class="icon settings-icon" data-open-page="settings" aria-label="الإعدادات"><span aria-hidden="true">⚙︎</span></button></div>
 </header>
 
 <section class="page active" id="home">
@@ -101,22 +101,30 @@
 </div>
 
 <div class="modal" id="dayModal">
-  <div class="sheet">
-    <div class="sheet-head"><div><small>تفاصيل اليوم</small><h2 id="selectedDate">—</h2></div><button class="close" data-close="dayModal">×</button></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="selectedDate">
+    <div class="sheet-grabber" aria-hidden="true"></div>
+    <div class="sheet-head"><div><small>تفاصيل اليوم</small><h2 id="selectedDate">—</h2></div><button class="close" data-close="dayModal" aria-label="رجوع">×</button></div>
     <div class="status-pill"><b id="selectedStatus">—</b><span id="selectedTime">—</span></div>
-    <button class="secondary full" id="toggleEditDay">أضف على هذا اليوم</button>
+    <button class="secondary full add-day-btn" id="toggleEditDay">أضف على هذا اليوم</button>
     <div class="edit-day" id="editDay" hidden>
-      <label class="field"><span>وش تبي تضيف؟</span><select id="dayType"><option value="overtime">إكسترا دي</option><option value="annual">إجازة سنوية</option><option value="sick">مرضية</option><option value="training">تدريب</option></select></label>
-      <div class="two" id="dayTimes"><label class="field"><span>يبدأ</span><input id="dayStart" type="time"></label><label class="field"><span>ينتهي</span><input id="dayEnd" type="time"></label></div>
-      <label class="field"><span>الموقع أو رقم الجوب (اختياري)</span><input id="dayJob" placeholder="مثال: Hoist-81"></label>
-      <label class="field"><span>ملاحظة (اختياري)</span><textarea id="dayNote" rows="2" placeholder="اكتب أي شيء تبي تتذكره"></textarea></label>
-      <div class="actions"><button class="secondary" id="resetDay">إرجاع لجدولي</button><button class="primary" id="saveDay">احفظ اليوم</button></div>
+      <div class="edit-title"><b>وش تبي تضيف؟</b><small>اختر إضافة واحدة لهذا اليوم</small></div>
+      <select id="dayType" class="sr-only" aria-label="نوع الإضافة"><option value="overtime">إكسترا دي</option><option value="annual">إجازة سنوية</option><option value="sick">مرضية</option><option value="training">تدريب</option></select>
+      <div class="day-type-grid" role="group" aria-label="نوع الإضافة">
+        <button type="button" data-day-type="overtime"><i>＋</i><b>إكسترا دي</b><small>دوام إضافي</small></button>
+        <button type="button" data-day-type="annual"><i>☀︎</i><b>إجازة سنوية</b><small>من رصيدك</small></button>
+        <button type="button" data-day-type="sick"><i>✚</i><b>مرضية</b><small>غياب صحي</small></button>
+        <button type="button" data-day-type="training"><i>✓</i><b>تدريب</b><small>يوم تدريبي</small></button>
+      </div>
+      <div class="two day-time-fields" id="dayTimes"><label class="field"><span>يبدأ</span><input id="dayStart" type="time"></label><label class="field"><span>ينتهي</span><input id="dayEnd" type="time"></label></div>
+      <label class="field"><span>الموقع أو رقم الجوب <em>اختياري</em></span><input id="dayJob" placeholder="مثال: Hoist-81" autocomplete="off"></label>
+      <label class="field"><span>ملاحظة <em>اختياري</em></span><textarea id="dayNote" rows="3" placeholder="اكتب أي شيء تبي تتذكره"></textarea></label>
+      <div class="actions day-actions"><button class="secondary" id="resetDay">إرجاع لجدولي</button><button class="primary" id="saveDay">حفظ الإضافة</button></div>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="core.js?v=4.6"></script>
-<script src="simple.js?v=4.6"></script>
+<script src="core.js?v=5.0"></script>
+<script src="simple.js?v=5.0"></script>
 </body>
 </html>
