@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 var C=window.DawamiCore,DATA_KEY="dawami-data-v3",BACKUP_KEY="dawami-v3-legacy-backup",MIGRATION_KEY="dawami-v3-migrated";
-var appData=loadData(),S=appData.schedule,nowTarget=null,currentView="dashboard",calendarMode="month",calendarFocus=C.dateKeyAt(Date.now(),appData.settings.timezone),heatYear=Number(calendarFocus.slice(0,4)),selectedDate=null,selectedDays=new Set(),selectionMode=false,clipboard=null,undoStack=[],dayDraftExtras=[],leaveFilter="upcoming",onboardStep=1,onboardPattern="14-14",patternChoice=null,deferredInstall=null,reminderTimer=null;
+var appData=loadData(),S=appData.schedule,nowTarget=null,currentView="dashboard",calendarMode="month",calendarFocus=C.dateKeyAt(Date.now(),appData.settings.timezone),heatYear=Number(calendarFocus.slice(0,4)),selectedDate=null,selectedDays=new Set(),selectionMode=false,clipboard=null,undoStack=[],dayDraftExtras=[],leaveFilter="upcoming",onboardStep=1,onboardPattern="14-14",patternChoice=null,deferredInstall=null,reminderTimers=[];
 var monthNames=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],dayNames=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
 
 function parseJSON(k){try{var x=localStorage.getItem(k);return x?JSON.parse(x):null}catch(e){return null}}
