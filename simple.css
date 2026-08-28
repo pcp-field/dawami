@@ -74,3 +74,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
  .quick article{padding:13px 9px}.quick b{font-size:17px}.calendar{gap:3px}.day{min-height:64px}.day-type-grid button{min-height:88px;padding:11px}
 }
 @supports(padding:max(0px)){.bottom-nav{padding-bottom:max(7px,env(safe-area-inset-bottom))}}
+
+.quick{grid-template-columns:repeat(4,minmax(0,1fr))}.quick .green b{color:var(--green)}
+@media(max-width:700px){.quick{grid-template-columns:1fr 1fr}.quick article{min-height:108px}.quick article:last-child{grid-column:auto}}
+@media(max-width:390px){.quick{grid-template-columns:1fr 1fr}}
