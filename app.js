@@ -10,7 +10,7 @@ function defaultData(){
  return{version:3,onboarded:false,migratedFrom:[],profile:{name:""},settings:{timezone:"Asia/Muscat",theme:"dark",workHours:12,payRate:0,payDay:25,annualBalance:30,carriedBalance:0,deductRest:false,scheduleLocked:false,notificationEnabled:false,reminderBefore:60,remindNightBefore:false,remindReturn:true,remindNightShift:false},schedule:{anchor:C.dateKeyAt(Date.now(),"Asia/Muscat"),patternId:"14-14",patternName:C.presets()["14-14"].name,cycle:copy(C.presets()["14-14"].cycle),overrides:{},leaves:[]}}
 }
 function flexibleLegacyEvents(raw,out){
- if(!raw)return;var list=Array.isArray(raw)?raw:(raw.shifts||raw.entries||raw.days||raw.schedule||[]);
+ if(!raw)return;var list=Array.isArray(raw)?raw:(raw.shifts||raw.entries||raw.days||raw.schedule||raw);
  if(!Array.isArray(list)&&typeof list==="object")list=Object.keys(list).map(function(k){var v=list[k];return typeof v==="object"?Object.assign({date:k},v):{date:k,type:v}});
  if(!Array.isArray(list))return;
  list.forEach(function(x){if(!x)return;var k=x.date||x.day||x.dateKey||x.startDate;if(!/^\d{4}-\d{2}-\d{2}/.test(k||""))return;k=k.slice(0,10);var type=mapType(x.type||x.shift||x.status||x.name);out[k]={type:type,label:x.label||x.name,start:x.start||x.startTime,end:x.end||x.endTime,note:x.note||"",location:x.location||"",job:x.job||x.hoist||""}})
@@ -77,7 +77,7 @@ function renderDashboard(){
  nowTarget=target;updateCountdown();
  var cycPos=((C.diffDays(S.anchor,today)%S.cycle.length)+S.cycle.length)%S.cycle.length+1;setText("orbitValue",cycPos);setText("orbitLabel","من "+S.cycle.length+" يوم");$("#shiftOrbit").style.setProperty("--progress",(cycPos/S.cycle.length*100)+"%");
  var workLeft=block?C.workDaysBetween(S,today,block.start):0;setText("workDaysLeft",workLeft);setText("breakTitle",st.kind==="off"||st.kind==="leave"?"فترة الراحة الحالية":"إجازتك القادمة");
- setText("breakStart",exact?fmtEpoch(exact.start):"—");setText("breakEnd",block?fmtKey(block.end,{weekday:"long",day:"numeric",month:"long"}):"—");setText("returnDate",exact&&exact.first?fmtEpoch(exact.first.start):block?fmtKey(block.returnDate):"—");setText("returnShift",exact&&exact.first?eventName(exact.first.event)+" "+exact.first.event.start:"—");$("#breakProgress").style.width=Math.max(5,Math.min(100,100-workLeft/Math.max(1,S.cycle.length)*100))+"%";
+ setText("breakStart",exact?fmtEpoch(exact.start):"—");setText("breakEnd",exact?fmtEpoch(exact.end):block?fmtKey(block.end,{weekday:"long",day:"numeric",month:"long"}):"—");setText("returnDate",exact&&exact.first?fmtEpoch(exact.first.start):block?fmtKey(block.returnDate):"—");setText("returnShift",exact&&exact.first?eventName(exact.first.event)+" "+exact.first.event.start:"—");$("#breakProgress").style.width=Math.max(5,Math.min(100,100-workLeft/Math.max(1,S.cycle.length)*100))+"%";
  var p=C.monthKeyParts(today),stats=C.monthStats(S,p.year,p.month,appData.settings.workHours),next=st.nextShift,balance=leaveBalance(p.year);
  setText("statNextShift",next?eventName(next.event):"لا توجد");setText("statNextTime",next?fmtEpoch(next.start,{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}):"—");setText("statWorkDays",stats.workDays);setText("statOffDays",stats.offDays);setText("statHours",Math.round(stats.hours));setText("statOvertime",stats.overtime);setText("statBalance",balance.remaining);
  var strip=$("#weekStrip");strip.innerHTML="";for(var i=0;i<7;i++){var k=C.addDays(today,i),e=C.primaryEvent(S,k),b=document.createElement("button");b.className="week-day "+e.type+(i===0?" today":"");b.innerHTML="<small>"+fmtKey(k,{weekday:"short"})+"</small><b>"+Number(k.slice(8))+"</b><span>"+eventName(e)+"</span>";b.onclick=(function(x){return function(){calendarFocus=x;setView("calendar");openDay(x)}})(k);strip.appendChild(b)}
@@ -187,7 +187,17 @@ async function enableNotifications(){
 }
 async function notify(title,body){try{var reg=await navigator.serviceWorker.ready;reg.showNotification(title,{body:body,icon:"icon.svg",badge:"icon.svg",tag:"dawami-reminder"})}catch(e){}}
 function scheduleReminder(){
- clearTimeout(reminderTimer);if(!appData.settings.notificationEnabled||Notification.permission!=="granted")return;var next=C.nextShift(S,Date.now(),appData.settings.timezone),before=Number(appData.settings.reminderBefore||60)*60000;if(!next)return;var delay=next.start-before-Date.now();if(delay>0&&delay<2147483647)reminderTimer=setTimeout(function(){notify("وردية "+eventName(next.event),"تبدأ "+fmtEpoch(next.start));scheduleReminder()},delay)
+ reminderTimers.forEach(clearTimeout);reminderTimers=[];if(!("Notification"in window)||!appData.settings.notificationEnabled||Notification.permission!=="granted")return;
+ var now=Date.now(),tz=appData.settings.timezone,next=C.nextShift(S,now,tz),status=C.nowStatus(S,now,tz),before=Number(appData.settings.reminderBefore||60)*60000;
+ function queue(at,title,body){var delay=at-now;if(delay>0&&delay<2147483647)reminderTimers.push(setTimeout(function(){notify(title,body);scheduleReminder()},delay))}
+ if(next){
+   queue(next.start-before,"وردية "+eventName(next.event),"تبدأ "+fmtEpoch(next.start));
+   if(appData.settings.remindNightShift&&next.event.type==="night")queue(next.start-120*60000,"وردية ليلية قادمة","وردية "+eventName(next.event)+" تبدأ "+fmtEpoch(next.start));
+   if(appData.settings.remindNightBefore){var eve=C.addDays(next.date,-1),nightAt=C.zonedEpoch(eve,"20:00",tz);queue(nightAt,"غدًا بداية دوامك","أول وردية تبدأ "+fmtEpoch(next.start))}
+   if(appData.settings.remindReturn&&(status.kind==="off"||status.kind==="leave"))queue(next.start-24*3600000,"باقي 24 ساعة على الرجوع","أول وردية بعد الراحة: "+eventName(next.event)+"، "+fmtEpoch(next.start))
+ }
+ var today=C.dateKeyAt(now,tz),year=Number(today.slice(0,4)),yearAlert=C.zonedEpoch(year+"-12-01","09:00",tz),bal=leaveBalance(year);
+ queue(yearAlert,"راجع رصيد إجازتك","متبقي "+bal.remaining+" يوم قبل نهاية سنة الإجازة");
 }
 function download(name,text,type){var b=new Blob([text],{type:type||"application/octet-stream"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=name;a.click();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
 function exportCSV(){
