@@ -101,3 +101,11 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
  .status{min-height:228px}.status h1{font-size:26px}.ring{width:72px;height:72px}.ring:before{width:53px;height:53px}
  .countdown-parts span{min-width:48px}.countdown-parts b{font-size:18px}
 }
+
+
+/* Settings and forced-cache refresh — v6 */
+.profile-settings{background:linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,#0a84ff 4%),var(--card))}
+.reminder-field{margin:14px 0 4px}.reminder-field select:disabled{opacity:.5}.update-now{border-color:color-mix(in srgb,#0a84ff 50%,var(--line));color:#0a84ff}
+.settings-list{grid-template-columns:minmax(0,1fr)}.setting-card{position:relative;overflow:hidden}.setting-card h2{font-size:18px}.setting-card>p{font-size:10px}
+@media(min-width:760px){.settings-list{grid-template-columns:1fr 1fr}.settings-list .setting-card:last-child{grid-column:1/-1}}
+@media(max-width:700px){.settings-list{gap:10px}.setting-card{padding:18px;border-radius:22px}.setting-card h2{font-size:17px}.field{margin-top:10px}.field span{font-size:10px}.details-body .secondary{min-height:50px}}
