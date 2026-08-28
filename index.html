@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#080b11">
 <meta name="description" content="دوامي — اعرف متى تداوم وكم باقي على إجازتك">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest?v=4.1">
+<link rel="manifest" href="manifest.webmanifest?v=4.2">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="simple.css?v=4.1">
+<link rel="stylesheet" href="simple.css?v=4.2">
 <title>دوامي — دوامك وإجازتك بوضوح</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
 </section>
 
 <section class="page" id="calendar">
-  <div class="page-title"><h1>التقويم</h1><p>الأصفر يعني دوام والأسود يعني إجازة. اضغط على أي يوم لمعرفة التفاصيل أو تغييره.</p></div>
+  <div class="page-title"><h1>التقويم</h1><p>الأصفر يعني دوام والأسود يعني إجازة. اضغط على أي يوم لإضافة إكسترا دي أو إجازة مسجلة أو ملاحظة.</p></div>
   <article class="card">
     <div class="cal-top">
       <div class="month-switch"><button id="nextMonth">‹</button><b id="monthLabel">—</b><button id="prevMonth">›</button></div>
@@ -50,7 +50,7 @@
     </div>
     <div class="weekdays"><span>الاثنين</span><span>الثلاثاء</span><span>الأربعاء</span><span>الخميس</span><span>الجمعة</span><span>السبت</span><span>الأحد</span></div>
     <div class="calendar" id="calendarGrid"></div>
-    <div class="legend"><span><i class="l-work"></i>دوام</span><span><i class="l-night"></i>دوام ليلي</span><span><i class="l-off"></i>إجازة</span><span><i class="l-leave"></i>إجازة مسجلة</span></div>
+    <div class="legend"><span><i class="l-work"></i>دوام</span><span><i class="l-off"></i>إجازة</span><span><i class="l-extra"></i>إكسترا دي</span><span><i class="l-leave"></i>سنوية</span><span><i class="l-sick"></i>مرضية</span><span><i class="l-training"></i>تدريب</span><span class="note-key">● ملاحظة</span></div>
   </article>
 </section>
 
@@ -103,18 +103,19 @@
   <div class="sheet">
     <div class="sheet-head"><div><small>تفاصيل اليوم</small><h2 id="selectedDate">—</h2></div><button class="close" data-close="dayModal">×</button></div>
     <div class="status-pill"><b id="selectedStatus">—</b><span id="selectedTime">—</span></div>
-    <button class="secondary full" id="toggleEditDay">غير هذا اليوم</button>
+    <button class="secondary full" id="toggleEditDay">أضف على هذا اليوم</button>
     <div class="edit-day" id="editDay" hidden>
-      <label class="field"><span>هذا اليوم</span><select id="dayType"><option value="day">دوام نهاري</option><option value="night">دوام ليلي</option><option value="off">إجازة</option></select></label>
-      <div class="two"><label class="field"><span>يبدأ</span><input id="dayStart" type="time"></label><label class="field"><span>ينتهي</span><input id="dayEnd" type="time"></label></div>
-      <label class="field"><span>ملاحظة (اختياري)</span><textarea id="dayNote" rows="2"></textarea></label>
-      <div class="actions"><button class="secondary" id="resetDay">ارجع للنمط</button><button class="primary" id="saveDay">احفظ اليوم</button></div>
+      <label class="field"><span>وش تبي تضيف؟</span><select id="dayType"><option value="overtime">إكسترا دي</option><option value="annual">إجازة سنوية</option><option value="sick">مرضية</option><option value="training">تدريب</option></select></label>
+      <div class="two" id="dayTimes"><label class="field"><span>يبدأ</span><input id="dayStart" type="time"></label><label class="field"><span>ينتهي</span><input id="dayEnd" type="time"></label></div>
+      <label class="field"><span>الموقع أو رقم الجوب (اختياري)</span><input id="dayJob" placeholder="مثال: Hoist-81"></label>
+      <label class="field"><span>ملاحظة (اختياري)</span><textarea id="dayNote" rows="2" placeholder="اكتب أي شيء تبي تتذكره"></textarea></label>
+      <div class="actions"><button class="secondary" id="resetDay">إرجاع لجدولي</button><button class="primary" id="saveDay">احفظ اليوم</button></div>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="core.js?v=4.1"></script>
-<script src="simple.js?v=4.1"></script>
+<script src="core.js?v=4.2"></script>
+<script src="simple.js?v=4.2"></script>
 </body>
 </html>
