@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#080b11">
 <meta name="description" content="دوامي — اعرف متى تداوم وكم باقي على إجازتك">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest?v=5.4">
+<link rel="manifest" href="manifest.webmanifest?v=6.0">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="simple.css?v=5.4">
+<link rel="stylesheet" href="dawami-v6.css">
 <title>دوامي — دوامك وإجازتك بوضوح</title>
 </head>
 <body>
@@ -59,6 +59,12 @@
 <section class="page" id="settings">
   <div class="page-title"><h1>الإعدادات</h1><p>غير الأساسيات فقط، ودوامي يحسب لك كل الشهور تلقائيًا.</p></div>
   <div class="settings-list">
+    <article class="setting-card profile-settings">
+      <h2>حسابك والمنطقة</h2><p>تُستخدم لحساب الوقت والتاريخ عندك بدقة.</p>
+      <label class="field"><span>اسمك</span><input id="settingsName" placeholder="اسمك (اختياري)" autocomplete="name"></label>
+      <label class="field"><span>المنطقة الزمنية</span><select id="timezoneSelect"><option value="Asia/Muscat">سلطنة عُمان — مسقط</option><option value="Asia/Dubai">الإمارات</option><option value="Asia/Riyadh">السعودية</option><option value="Asia/Qatar">قطر</option><option value="Asia/Kuwait">الكويت</option><option value="Asia/Bahrain">البحرين</option></select></label>
+    </article>
+
     <article class="setting-card">
       <h2>نمط دوامك</h2><p>اختر عدد أيام الدوام والإجازة.</p>
       <label class="field"><span>النمط</span><select id="patternSelect"><option value="14-14">14 يوم دوام / 14 يوم إجازة</option><option value="28-14">28 يوم دوام / 14 يوم إجازة</option><option value="7-7">7 أيام دوام / 7 أيام إجازة</option><option value="4-4">4 أيام دوام / 4 أيام إجازة</option><option value="2d2n4">يومان نهاري / يومان ليلي / 4 أيام إجازة</option></select></label>
@@ -76,7 +82,8 @@
     <article class="setting-card">
       <div class="row"><div><b>الوضع الداكن</b><small>غير شكل الموقع</small></div><button class="switch" id="darkSwitch"><i></i></button></div>
       <div class="row"><div><b>تنبيه قبل الدوام</b><small id="notifyText">غير مفعل</small></div><button class="switch" id="notifySwitch"><i></i></button></div>
-      <details><summary>خيارات الحفظ والاستعادة</summary><div class="details-body"><button class="secondary" id="exportData">تحميل نسخة من بياناتي</button><label class="secondary" style="text-align:center">استعادة نسخة<input id="importData" type="file" accept="application/json" hidden></label><button class="secondary" id="showSetup">إعادة ضبط نمط الدوام</button></div></details>
+      <label class="field reminder-field"><span>وقت التنبيه</span><select id="reminderBefore"><option value="30">قبل 30 دقيقة</option><option value="60">قبل ساعة</option><option value="120">قبل ساعتين</option><option value="720">قبل 12 ساعة</option><option value="1440">قبل يوم</option></select></label>
+      <details><summary>البيانات والتحديث</summary><div class="details-body"><button class="secondary update-now" id="forceUpdate">تحديث الموقع الآن</button><button class="secondary" id="exportData">تحميل نسخة من بياناتي</button><label class="secondary" style="text-align:center">استعادة نسخة<input id="importData" type="file" accept="application/json" hidden></label><button class="secondary" id="showSetup">إعادة ضبط نمط الدوام</button></div></details>
     </article>
   </div>
 </section>
@@ -125,7 +132,7 @@
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="core.js?v=5.4"></script>
-<script src="simple.js?v=5.4"></script>
+<script src="core.js?v=6.0"></script>
+<script src="dawami-v6.js"></script>
 </body>
 </html>
