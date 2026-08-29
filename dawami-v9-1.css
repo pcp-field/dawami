@@ -1,0 +1,16 @@
+undefined
+.calendar-settings svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.dashboard-popover{display:none}
+.home-page.active{position:fixed;inset:0;z-index:95;margin:0;padding:0;display:flex;align-items:flex-end;justify-content:center;background:rgba(2,6,12,.58);backdrop-filter:blur(13px);animation:modalFade .2s ease}
+.dashboard-sheet{width:min(100%,780px);max-height:92dvh;padding:18px 18px max(28px,calc(var(--safe-bottom) + 18px));overflow-y:auto;border:1px solid var(--line);border-bottom:0;border-radius:32px 32px 0 0;background:var(--bg);box-shadow:0 -25px 80px rgba(0,0,0,.35);animation:sheetUp .28s cubic-bezier(.2,.8,.2,1)}
+.dashboard-head{position:sticky;top:-18px;z-index:5;margin:-2px -2px 14px;padding:3px 2px 12px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(var(--bg) 82%,transparent)}
+.dashboard-head small{color:var(--accent);font-size:9px;font-weight:900}.dashboard-head h2{margin:3px 0 0;font-size:26px;letter-spacing:-.7px}
+.month-label{min-width:0!important;width:100%!important;padding:0 6px!important;font-size:18px!important;font-weight:900}
+.status-launch{font-size:8px!important;color:var(--accent)!important}
+@keyframes sheetUp{from{opacity:.5;transform:translateY(45px)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .dashboard-sheet{padding:15px 13px max(24px,calc(var(--safe-bottom) + 14px));border-radius:29px 29px 0 0}
+ .dashboard-head{top:-15px}
+ .home-page .status-hero{margin-top:0}
+}
