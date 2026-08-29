@@ -50,3 +50,48 @@ html,body{max-width:100%;overflow-x:hidden}
  .home-page .status-hero{min-height:192px}
 }
 
+
+
+/* v9.4 touch-first motion */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation}
+body.modal-open{overflow:hidden;overscroll-behavior:none}
+button,.day,[role="button"]{touch-action:manipulation;-webkit-touch-callout:none;user-select:none;transform:translateZ(0)}
+button,.day,.day-type-grid button{transition:transform .16s cubic-bezier(.2,.8,.2,1),border-color .2s,background-color .2s,box-shadow .2s,filter .2s}
+button.is-pressing,.day.is-pressing{transform:scale(.965);filter:brightness(1.08)}
+button,.day{position:relative;overflow:hidden}
+.tap-wave{position:absolute;z-index:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;pointer-events:none;background:color-mix(in srgb,currentColor 20%,transparent);transform:scale(0);animation:tapWave .48s ease-out forwards}
+button>*{position:relative;z-index:1}
+@keyframes tapWave{to{transform:scale(18);opacity:0}}
+.calendar-grid.month-next{animation:monthNext .28s cubic-bezier(.2,.8,.2,1)}
+.calendar-grid.month-prev{animation:monthPrev .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes monthNext{from{opacity:.35;transform:translate3d(-16px,0,0)}to{opacity:1;transform:none}}
+@keyframes monthPrev{from{opacity:.35;transform:translate3d(16px,0,0)}to{opacity:1;transform:none}}
+.day:active{transform:scale(.94)}
+.modal,.home-page.active{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.modal{background:rgba(2,6,12,.52)}
+.modal.open .sheet{animation:touchSheetIn .36s cubic-bezier(.16,1,.3,1)}
+@keyframes touchSheetIn{from{transform:translate3d(0,42px,0);opacity:.55}to{transform:none;opacity:1}}
+.sheet{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;will-change:transform}
+.sheet.dragging{transition:none!important}
+.sheet.settling{transition:transform .3s cubic-bezier(.16,1,.3,1)!important}
+.sheet-grabber{transition:width .18s,background-color .18s}
+.sheet.dragging .sheet-grabber{width:58px;background:var(--accent)}
+.edit-day.reveal{animation:editReveal .32s cubic-bezier(.16,1,.3,1)}
+@keyframes editReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.day-type-grid button{--choice:var(--accent)}
+.day-type-grid button[data-day-type="overtime"]{--choice:var(--extra-color)}
+.day-type-grid button[data-day-type="annual"]{--choice:var(--annual-color)}
+.day-type-grid button[data-day-type="sick"]{--choice:var(--sick-color)}
+.day-type-grid button[data-day-type="training"]{--choice:var(--training-color)}
+.day-type-grid button.active{border-color:var(--choice)!important;background:color-mix(in srgb,var(--choice) 11%,var(--surface-2));box-shadow:0 0 0 2px color-mix(in srgb,var(--choice) 30%,transparent),0 12px 28px color-mix(in srgb,var(--choice) 12%,transparent)!important}
+.day-type-grid button.active i{background:color-mix(in srgb,var(--choice) 22%,var(--surface-3));color:var(--choice)}
+@media(max-width:700px){
+ input,select,textarea{font-size:16px!important}
+ .sheet{max-height:88dvh;border-radius:28px 28px 0 0}
+ .sheet-head{padding-block:2px 5px}
+ .day-type-grid button{min-height:88px}
+ .primary,.secondary,.add-day-btn{min-height:54px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
