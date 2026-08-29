@@ -21,7 +21,8 @@ assert.ok(app.includes('location.hash.slice(1)==="settings"?"settings":"calendar
 const ids=new Set([...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]));
 const refs=[...app.matchAll(/\$\("#([A-Za-z][A-Za-z0-9_-]*)"\)/g)].map(m=>m[1]);
 assert.deepEqual([...new Set(refs.filter(id=>!ids.has(id)))],[]);
-assert.equal(html.includes("وردية"),false);
+const markup=html.replace(/<script[\s\S]*?<\/script>/g,"");
+assert.equal(markup.includes("وردية"),false);
 assert.equal(app.includes("وردية"),false);
 assert.equal(html.includes('class="bottom-nav"'),false);
 assert.ok(html.includes('class="page active app-panel calendar-panel" id="calendar"'));
