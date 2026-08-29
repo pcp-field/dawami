@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="dark" data-build="9.2-inline">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -9,7 +9,88 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.webmanifest?v=9.0">
 <link rel="icon" href="icon.svg?v=9.0" type="image/svg+xml">
-<link rel="stylesheet" href="dawami-v9-1.css?v=9.1">
+<style data-inline="dawami-v9.2">:root{
+ --accent:#3B82F6;--work-color:#F6C453;--off-color:#64748B;--extra-color:#FF8A4C;--annual-color:#58C7E3;
+ --sick-color:#ED6F7D;--training-color:#36B594;--official-color:#9B6CF2;
+ --bg:#F4F6FA;--surface:#FFFFFF;--surface-2:#EEF2F7;--surface-3:#E7ECF3;--text:#101828;--muted:#667085;
+ --line:#DCE3EC;--shadow:0 18px 50px rgba(15,23,42,.09);--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
+}
+html[data-theme="dark"]{
+ color-scheme:dark;--bg:#070B11;--surface:#101722;--surface-2:#151E2B;--surface-3:#1B2635;
+ --text:#F7F9FC;--muted:#91A0B5;--line:#263447;--shadow:0 22px 60px rgba(0,0,0,.3);
+}
+html[data-theme="light"]{color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg);scroll-behavior:auto}
+body{margin:0;min-height:100dvh;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","SF Pro Display","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 42%,transparent);outline-offset:2px}
+[hidden]{display:none!important}.ambient{position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.18}.ambient-one{width:360px;height:360px;right:-130px;top:-150px;background:var(--accent)}.ambient-two{width:300px;height:300px;left:-170px;bottom:5%;background:var(--work-color);opacity:.08}
+.app-shell{width:min(100%,980px);min-height:100dvh;margin:auto;padding:max(20px,calc(var(--safe-top) + 14px)) 18px max(32px,calc(var(--safe-bottom) + 24px))}
+.app-header{height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--text);text-decoration:none}.brand-mark{width:46px;height:46px;border-radius:15px;box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 22%,transparent)}.brand b{display:block;font-size:21px;letter-spacing:-.5px}.brand small{display:block;margin-top:2px;color:var(--muted);font-size:10px}
+.header-actions{display:flex;gap:9px;direction:ltr}.round-button{width:45px;height:45px;display:grid;place-items:center;border:1px solid var(--line);border-radius:15px;background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--text);backdrop-filter:blur(18px);box-shadow:0 7px 22px rgba(15,23,42,.06)}
+.settings-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-icon span{width:18px;height:18px;position:relative;display:block;border-radius:50%;background:var(--work-color);box-shadow:0 0 0 4px color-mix(in srgb,var(--work-color) 16%,transparent)}
+.theme-icon.moon span{background:transparent;box-shadow:inset 6px -4px 0 0 var(--text);transform:rotate(-20deg)}
+.page{display:none}.page.active{display:block;animation:fadeUp .22s ease}@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.home-page{margin-top:22px}.status-hero{--state:var(--off-color);min-height:300px;padding:30px;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 145px;align-items:center;gap:26px;border:1px solid color-mix(in srgb,var(--state) 26%,var(--line));border-radius:32px;background:linear-gradient(145deg,color-mix(in srgb,var(--state) 12%,var(--surface)),var(--surface));box-shadow:var(--shadow)}
+.status-hero.work{--state:var(--work-color)}.status-hero.off{--state:var(--off-color)}.status-hero.soon{--state:var(--accent)}
+.status-hero:before{content:"";position:absolute;width:420px;height:420px;left:-190px;bottom:-300px;border:72px solid color-mix(in srgb,var(--state) 10%,transparent);border-radius:50%}.status-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 55%,color-mix(in srgb,var(--state) 6%,transparent));pointer-events:none}
+.status-main,.cycle-orbit{position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:11px;font-weight:800}.eyebrow i{width:10px;height:10px;border-radius:50%;background:var(--state);box-shadow:0 0 0 6px color-mix(in srgb,var(--state) 13%,transparent)}
+.status-hero h1{margin:17px 0 5px;font-size:42px;line-height:1.16;letter-spacing:-1.4px}.status-hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.timer-block{margin-top:28px}.timer-block>small{display:block;margin-bottom:8px;color:var(--muted);font-size:10px;font-weight:800}
+.countdown-parts{direction:ltr;display:flex;align-items:center;justify-content:flex-end;gap:7px;font-variant-numeric:tabular-nums}.countdown-parts span{min-width:67px;padding:10px 9px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--state) 20%,var(--line));border-radius:16px;background:color-mix(in srgb,var(--surface-2) 72%,transparent)}.countdown-parts b{font-size:25px;line-height:1}.countdown-parts span small{margin-top:6px;color:var(--muted);font-size:8px;font-weight:800}.countdown-parts>i{font-style:normal;color:var(--muted);font-weight:900}.countdown-parts.empty{display:block;color:var(--text);font-size:16px;font-weight:850}
+.cycle-orbit{--p:0%;width:132px;height:132px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--state) var(--p),color-mix(in srgb,var(--state) 12%,var(--surface-3)) 0);box-shadow:0 15px 35px color-mix(in srgb,var(--state) 12%,transparent)}.cycle-orbit:before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}.cycle-orbit div{position:relative;text-align:center}.cycle-orbit b{display:block;font-size:33px}.cycle-orbit small{display:block;margin-top:3px;color:var(--muted);font-size:9px}
+.summary-grid{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.summary-card{--tile:var(--accent);min-height:145px;padding:18px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:linear-gradient(145deg,color-mix(in srgb,var(--tile) 5%,var(--surface)),var(--surface));box-shadow:0 10px 28px rgba(15,23,42,.06)}.summary-card:after{content:"";position:absolute;width:70px;height:70px;left:-28px;bottom:-35px;border:18px solid color-mix(in srgb,var(--tile) 10%,transparent);border-radius:50%}.work-summary{--tile:var(--work-color)}.leave-summary{--tile:var(--annual-color)}.return-summary{--tile:var(--accent)}.month-summary{--tile:var(--training-color)}.summary-icon{width:29px;height:29px;display:grid;place-items:center;position:absolute;left:14px;top:14px;border-radius:10px;background:color-mix(in srgb,var(--tile) 12%,var(--surface-2));color:var(--tile);font-size:14px;font-weight:900}.summary-card>small{display:block;padding-left:34px;color:var(--muted);font-size:10px;font-weight:800}.summary-card>b{display:block;margin-top:22px;color:var(--tile);font-size:24px;letter-spacing:-.5px}.summary-card p{margin:7px 0 0;color:var(--muted);font-size:9px;line-height:1.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upcoming-panel{margin-top:14px;padding:22px;border:1px solid var(--line);border-radius:28px;background:var(--surface);box-shadow:var(--shadow)}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}.section-heading small{color:var(--muted);font-size:9px;font-weight:800}.section-heading h2{margin:3px 0 0;font-size:24px;letter-spacing:-.6px}.open-calendar{min-height:42px;padding:0 13px;display:flex;align-items:center;gap:9px;border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));border-radius:14px;background:color-mix(in srgb,var(--accent) 8%,var(--surface));color:var(--accent);font-size:10px;font-weight:850}.open-calendar b{font-size:17px}
+.upcoming-rail{margin-top:17px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(112px,1fr);gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding:3px 2px 7px}.upcoming-rail::-webkit-scrollbar{display:none}.strip-day{--event:var(--off-color);min-height:132px;padding:12px 10px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;border:1px solid color-mix(in srgb,var(--event) 28%,var(--line));border-radius:20px;background:linear-gradient(155deg,color-mix(in srgb,var(--event) 11%,var(--surface)),var(--surface));color:var(--text);scroll-snap-align:start;text-align:right}.strip-day:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--event)}.strip-day.work{--event:var(--work-color)}.strip-day.off{--event:var(--off-color)}.strip-day.extra{--event:var(--extra-color)}.strip-day.leave{--event:var(--annual-color)}.strip-day.sick{--event:var(--sick-color)}.strip-day.training{--event:var(--training-color)}.strip-day.night{--event:#7D6BE8}.strip-day.today{box-shadow:0 0 0 2px var(--accent)}.strip-day small{font-size:9px;color:var(--muted)}.strip-day b{font-size:29px;line-height:1}.strip-day span{font-size:10px;font-weight:900;color:var(--event)}.strip-day .official-name{font-size:6px;color:var(--official-color)}
+.calendar-cta{width:100%;min-height:72px;margin-top:14px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));border-radius:22px;background:linear-gradient(125deg,color-mix(in srgb,var(--accent) 11%,var(--surface)),var(--surface));color:var(--text);text-align:right}.calendar-cta span b{display:block;font-size:15px}.calendar-cta span small{display:block;margin-top:4px;color:var(--muted);font-size:9px}.calendar-cta>i{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:var(--accent);color:white;font-size:20px;font-style:normal}
+body.panel-open{overflow:hidden}.app-panel.active{position:fixed;inset:0;z-index:80;margin:0;background:var(--bg)}
+.calendar-panel.active{height:100dvh;padding:max(12px,calc(var(--safe-top) + 8px)) 12px max(12px,calc(var(--safe-bottom) + 8px));display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;overflow:hidden}
+.panel-top{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:9px}.panel-close,.today-button,.month-switch button{height:46px;border:1px solid var(--line);border-radius:15px;background:var(--surface-2);color:var(--text)}.panel-close{width:48px;font-size:25px}.today-button{width:48px;font-size:9px;font-weight:900}.month-switch{display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:7px}.month-switch b{text-align:center;font-size:20px;letter-spacing:-.4px}.month-switch button{width:46px;font-size:24px}
+.calendar-surface{min-height:0;padding:11px 10px 8px;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;border:1px solid var(--line);border-radius:27px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}.weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.weekdays{padding:4px 0 8px}.weekdays span{text-align:center;color:var(--muted);font-size:8px;font-weight:850}.calendar-grid{height:100%;min-height:0;grid-auto-rows:minmax(0,1fr)}.day{--event:var(--off-color);min-width:0;min-height:0;padding:7px 6px;position:relative;overflow:hidden;border:1px solid color-mix(in srgb,var(--event) 24%,var(--line));border-radius:13px;background:linear-gradient(155deg,color-mix(in srgb,var(--event) 10%,var(--surface-2)),var(--surface-2));color:var(--text);text-align:right}.day:after{content:"";position:absolute;right:0;left:0;bottom:0;height:3px;background:var(--event);opacity:.9}.day.work{--event:var(--work-color)}.day.off{--event:var(--off-color)}.day.extra{--event:var(--extra-color)}.day.leave{--event:var(--annual-color)}.day.sick{--event:var(--sick-color)}.day.training{--event:var(--training-color)}.day.night{--event:#7D6BE8}.day em{display:block;font-style:normal;font-size:14px;font-weight:900}.day>b{display:block;margin-top:clamp(8px,2vh,18px);color:var(--event);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.day.out{opacity:.27}.day.today{outline:3px solid var(--accent);outline-offset:1px;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 12%,transparent)}.day.manual:before{content:"";width:7px;height:7px;position:absolute;left:7px;top:7px;border-radius:50%;background:var(--extra-color)}.day.has-note:before{content:"✎";position:absolute;left:6px;bottom:6px;color:var(--text);font-size:10px;font-weight:900}.day.official:after{height:4px;background:var(--official-color)}.official-name{display:block!important;margin-top:3px!important;color:var(--official-color)!important;font-size:5.5px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calendar-legend{display:flex;align-items:center;gap:13px;margin-top:8px;padding:2px 1px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;color:var(--muted);font-size:8px}.calendar-legend::-webkit-scrollbar{display:none}.calendar-legend span{display:flex;align-items:center;gap:5px}.calendar-legend i{width:9px;height:9px;border-radius:3px}.l-work{background:var(--work-color)}.l-off{background:var(--off-color)}.l-extra{background:var(--extra-color)}.l-leave{background:var(--annual-color)}.l-sick{background:var(--sick-color)}.l-training{background:var(--training-color)}.l-official{background:var(--official-color)}.note-key{color:var(--text)}.holiday-sync{margin-top:5px;color:var(--muted);font-size:7px}
+.settings-panel.active{height:100dvh;padding:max(14px,calc(var(--safe-top) + 10px)) 14px max(22px,calc(var(--safe-bottom) + 14px));overflow-y:auto;-webkit-overflow-scrolling:touch}.settings-top{width:min(100%,760px);margin:0 auto 14px;padding:3px 2px 12px;position:sticky;top:-3px;z-index:4;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(var(--bg) 82%,transparent)}.settings-top small{color:var(--accent);font-size:9px;font-weight:900}.settings-top h1{margin:3px 0 0;font-size:31px;letter-spacing:-1px}.settings-list{width:min(100%,760px);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.settings-card{padding:21px;border:1px solid var(--line);border-radius:25px;background:var(--surface);box-shadow:var(--shadow)}.identity-card,.color-studio{grid-column:1/-1}.card-title{display:flex;align-items:center;gap:11px;margin-bottom:14px}.card-title>span{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,var(--surface-2));color:var(--accent);font-size:9px;font-weight:900}.card-title h2{margin:0;font-size:18px}.card-title p{margin:3px 0 0;color:var(--muted);font-size:9px}
+.field{display:grid;gap:6px;margin-top:11px}.field>span{color:var(--muted);font-size:9px;font-weight:850}.field span em{font-style:normal;font-weight:500;opacity:.7}.field input,.field select,.field textarea{width:100%;min-height:49px;padding:0 13px;border:1px solid var(--line);border-radius:15px;background:var(--surface-2);color:var(--text);font-size:15px}.field textarea{min-height:84px;padding-top:13px;resize:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.full{width:100%}.primary,.secondary,.ghost{min-height:50px;padding:0 15px;border-radius:15px;font-weight:900}.primary{margin-top:14px;border:0;background:var(--accent);color:#fff;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 25%,transparent)}.secondary,.ghost{border:1px solid var(--line);background:var(--surface-2);color:var(--text)}.cycle-preview,.setup-preview{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;margin-top:14px}.cycle-preview i,.setup-preview i{height:7px;border-radius:999px;background:var(--off-color)}.cycle-preview .work,.setup-preview .work{background:var(--work-color)}.cycle-preview .night,.setup-preview .night{background:#7D6BE8}
+.palette-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.palette-strip button{min-height:66px;padding:7px;border:1px solid var(--line);border-radius:15px;background:var(--surface-2);color:var(--text)}.palette-strip i{height:28px;display:block;border-radius:9px;background:linear-gradient(90deg,var(--p1) 0 40%,var(--p2) 40% 72%,var(--p3) 72%)}.palette-strip b{display:block;margin-top:6px;font-size:8px}.palette-strip button.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.color-grid label{min-height:60px;padding:9px;position:relative;display:flex;align-items:flex-end;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);overflow:hidden}.color-grid input{width:100%;height:100%;position:absolute;inset:0;border:0;opacity:0;cursor:pointer}.color-grid label>span{display:flex;align-items:center;gap:6px;pointer-events:none;color:var(--text);font-size:8px;font-weight:850}.color-grid label>span i{width:13px;height:13px;border-radius:50%;background:var(--dot);box-shadow:0 0 0 4px color-mix(in srgb,var(--dot) 16%,transparent)}
+.color-preview{margin:12px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.color-preview span{padding:9px 4px;text-align:center;border-radius:11px;font-size:8px;font-weight:900}.preview-work{background:color-mix(in srgb,var(--work-color) 18%,var(--surface-2));color:var(--work-color)}.preview-off{background:color-mix(in srgb,var(--off-color) 18%,var(--surface-2));color:var(--off-color)}.preview-extra{background:color-mix(in srgb,var(--extra-color) 18%,var(--surface-2));color:var(--extra-color)}.preview-annual{background:color-mix(in srgb,var(--annual-color) 18%,var(--surface-2));color:var(--annual-color)}
+.setting-row{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:13px;border-bottom:1px solid var(--line)}.setting-row b{display:block;font-size:12px}.setting-row small{display:block;margin-top:4px;color:var(--muted);font-size:8px}.switch{width:50px;height:29px;padding:3px;border:0;border-radius:999px;background:var(--surface-3)}.switch i{width:23px;height:23px;display:block;border-radius:50%;background:white;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:.2s}.switch.on{background:var(--accent)}.switch.on i{transform:translateX(-21px)}.reminder-field select:disabled{opacity:.5}details{margin-top:14px}summary{color:var(--muted);font-size:9px;font-weight:850;cursor:pointer}.details-body{margin-top:10px;display:grid;gap:8px}.upload-label{display:grid;place-items:center}
+.modal{display:none;position:fixed;inset:0;z-index:120;padding:18px;background:rgba(2,6,12,.68);backdrop-filter:blur(15px)}.modal.open{display:flex;align-items:center;justify-content:center;animation:modalFade .2s ease}@keyframes modalFade{from{opacity:0}to{opacity:1}}.dialog,.sheet{width:min(100%,560px);max-height:calc(100dvh - 36px);overflow-y:auto;border:1px solid var(--line);background:var(--surface);box-shadow:0 30px 80px rgba(0,0,0,.35)}.dialog{padding:23px;border-radius:28px}.setup-logo{display:flex;align-items:center;gap:11px;margin-bottom:14px}.setup-logo .logo-mark{width:44px;height:44px;border-radius:14px}.setup-logo b{display:block}.setup-logo small{display:block;margin-top:3px;color:var(--muted);font-size:8px}.pattern-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.pattern{min-height:48px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);color:var(--text);font-size:9px;font-weight:850}.pattern.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface-2));color:var(--accent)}
+.sheet{padding:10px 20px 22px;border-radius:30px}.sheet-grabber{width:42px;height:5px;margin:2px auto 12px;border-radius:999px;background:var(--line)}.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:13px}.sheet-head small{color:var(--muted);font-size:9px}.sheet-head h2{margin:4px 0 0;font-size:23px}.close{width:43px;height:43px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);color:var(--text);font-size:23px}.status-pill{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--surface-2)}.status-pill b{display:block;font-size:15px}.status-pill span{display:block;margin-top:5px;color:var(--muted);font-size:9px;line-height:1.6}.add-day-btn{margin-top:12px}.edit-day{margin-top:18px}.edit-title b{display:block}.edit-title small{display:block;margin-top:4px;color:var(--muted);font-size:8px}.day-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.day-type-grid button{min-height:92px;padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2);color:var(--text);text-align:right}.day-type-grid button i{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:var(--surface-3);font-style:normal}.day-type-grid button b{display:block;margin-top:8px;font-size:11px}.day-type-grid button small{display:block;margin-top:3px;color:var(--muted);font-size:8px}.day-type-grid button.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.day-actions{position:sticky;bottom:0;margin-top:18px;padding-top:12px;display:flex;gap:8px;background:linear-gradient(transparent,var(--surface) 20%)}.day-actions button{flex:1}.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.toast{position:fixed;z-index:200;right:50%;bottom:max(24px,calc(var(--safe-bottom) + 14px));transform:translate(50%,20px);padding:11px 15px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);box-shadow:var(--shadow);font-size:10px;font-weight:850;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(50%,0)}
+@media(max-width:700px){
+ .app-shell{padding:max(16px,calc(var(--safe-top) + 12px)) 13px max(24px,calc(var(--safe-bottom) + 18px))}
+ .app-header{height:56px}.brand-mark{width:43px;height:43px}.brand b{font-size:20px}.brand small{font-size:9px}.round-button{width:43px;height:43px}
+ .home-page{margin-top:18px}.status-hero{min-height:270px;padding:23px 18px;grid-template-columns:minmax(0,1fr) 93px;gap:12px;border-radius:28px}.status-hero h1{margin-top:14px;font-size:31px;letter-spacing:-1px}.status-hero p{font-size:10px}.timer-block{margin-top:21px}.countdown-parts{gap:4px}.countdown-parts span{min-width:52px;padding:8px 5px;border-radius:13px}.countdown-parts b{font-size:20px}.countdown-parts span small{font-size:7px}.cycle-orbit{width:88px;height:88px}.cycle-orbit:before{width:66px;height:66px}.cycle-orbit b{font-size:22px}.cycle-orbit small{font-size:7px}
+ .summary-grid{grid-template-columns:1fr 1fr;gap:9px}.summary-card{min-height:122px;padding:16px;border-radius:21px}.summary-card>b{margin-top:18px;font-size:21px}.summary-card p{font-size:8px}.summary-icon{width:27px;height:27px}
+ .upcoming-panel{padding:18px 14px;border-radius:25px}.section-heading h2{font-size:21px}.open-calendar span{display:none}.upcoming-rail{grid-auto-columns:108px;gap:8px;margin-top:13px}.strip-day{min-height:122px;border-radius:18px}.strip-day b{font-size:27px}
+ .calendar-cta{min-height:68px}
+ .calendar-panel.active{padding:max(10px,calc(var(--safe-top) + 6px)) 7px max(9px,calc(var(--safe-bottom) + 5px));gap:7px}.panel-top{grid-template-columns:42px minmax(0,1fr) 42px;gap:6px}.panel-close,.today-button{width:42px;height:42px;border-radius:13px}.month-switch{grid-template-columns:42px minmax(0,1fr) 42px;gap:5px}.month-switch button{width:42px;height:42px;border-radius:13px}.month-switch b{font-size:18px}.calendar-surface{padding:8px 7px 6px;border-radius:22px}.weekdays{padding:2px 0 6px;gap:3px}.weekdays span{font-size:7px}.calendar-grid{gap:3px}.day{padding:5px 4px;border-radius:10px}.day em{font-size:13px}.day>b{margin-top:clamp(6px,1.65vh,15px);font-size:7px}.calendar-legend{margin-top:5px;gap:11px}.holiday-sync{display:none}
+ .settings-list{grid-template-columns:1fr}.identity-card,.color-studio{grid-column:auto}.settings-card{padding:18px;border-radius:22px}.palette-strip{grid-template-columns:repeat(5,78px);overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.palette-strip::-webkit-scrollbar{display:none}.color-grid{grid-template-columns:1fr 1fr}.color-preview{grid-template-columns:1fr 1fr}
+ .modal{padding:0;align-items:flex-end!important}.dialog,.sheet{width:100%;max-height:92dvh;border-radius:29px 29px 0 0}.dialog{padding:22px 18px}.sheet{padding:9px 17px max(18px,calc(var(--safe-bottom) + 10px))}
+}
+@media(max-width:380px){
+ .status-hero{padding:20px 15px;grid-template-columns:minmax(0,1fr) 78px}.status-hero h1{font-size:27px}.cycle-orbit{width:75px;height:75px}.cycle-orbit:before{width:56px;height:56px}.countdown-parts span{min-width:47px}.summary-card{padding:14px}.upcoming-rail{grid-auto-columns:101px}
+ .day{padding:4px 3px}.day em{font-size:12px}.day>b{margin-top:5px;font-size:6.5px}.calendar-grid{gap:2px}.calendar-surface{padding-inline:5px}
+}
+undefined
+.calendar-settings svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.dashboard-popover{display:none}
+.home-page.active{position:fixed;inset:0;z-index:95;margin:0;padding:0;display:flex;align-items:flex-end;justify-content:center;background:rgba(2,6,12,.58);backdrop-filter:blur(13px);animation:modalFade .2s ease}
+.dashboard-sheet{width:min(100%,780px);max-height:92dvh;padding:18px 18px max(28px,calc(var(--safe-bottom) + 18px));overflow-y:auto;border:1px solid var(--line);border-bottom:0;border-radius:32px 32px 0 0;background:var(--bg);box-shadow:0 -25px 80px rgba(0,0,0,.35);animation:sheetUp .28s cubic-bezier(.2,.8,.2,1)}
+.dashboard-head{position:sticky;top:-18px;z-index:5;margin:-2px -2px 14px;padding:3px 2px 12px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(var(--bg) 82%,transparent)}
+.dashboard-head small{color:var(--accent);font-size:9px;font-weight:900}.dashboard-head h2{margin:3px 0 0;font-size:26px;letter-spacing:-.7px}
+.month-label{min-width:0!important;width:100%!important;padding:0 6px!important;font-size:18px!important;font-weight:900}
+.status-launch{font-size:8px!important;color:var(--accent)!important}
+@keyframes sheetUp{from{opacity:.5;transform:translateY(45px)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .dashboard-sheet{padding:15px 13px max(24px,calc(var(--safe-bottom) + 14px));border-radius:29px 29px 0 0}
+ .dashboard-head{top:-15px}
+ .home-page .status-hero{margin-top:0}
+}
+</style>
 <title>دوامي — دوامك وإجازتك بوضوح</title>
 </head>
 <body>
@@ -167,7 +248,268 @@
 
 
 <div class="toast" id="toast"></div>
-<script src="core.js?v=9.0"></script>
-<script src="dawami-v9-1.js?v=9.1"></script>
+<script data-inline="core">(function(root,factory){
+  var api=factory();
+  if(typeof module!=="undefined"&&module.exports)module.exports=api;
+  root.DawamiCore=api;
+})(typeof globalThis!=="undefined"?globalThis:this,function(){
+  "use strict";
+  var DAY=86400000;
+  var REST_TYPES=["off","annual","sick","emergency","comp","unpaid","leave"];
+  var WORK_TYPES=["work","day","night","overtime","training"];
+
+  function pad(n){return String(n).padStart(2,"0")}
+  function toDay(k){var p=String(k).slice(0,10).split("-").map(Number);return Math.floor(Date.UTC(p[0],p[1]-1,p[2])/DAY)}
+  function fromDay(n){var d=new Date(n*DAY);return d.getUTCFullYear()+"-"+pad(d.getUTCMonth()+1)+"-"+pad(d.getUTCDate())}
+  function addDays(k,n){return fromDay(toDay(k)+n)}
+  function diffDays(a,b){return toDay(b)-toDay(a)}
+  function mod(n,m){return((n%m)+m)%m}
+  function range(a,b){var out=[];for(var n=toDay(a),e=toDay(b);n<=e;n++)out.push(fromDay(n));return out}
+  function daysInMonth(y,m){return new Date(Date.UTC(y,m,0)).getUTCDate()}
+  function monthKeyParts(k){var p=k.split("-").map(Number);return{year:p[0],month:p[1],day:p[2]}}
+
+  function presets(){
+    return{
+      "14-14":{name:"14 دوام / 14 راحة",cycle:repeat({type:"day",label:"نهاري",start:"07:00",end:"19:00"},14).concat(repeat({type:"off",label:"راحة"},14))},
+      "28-14":{name:"28 دوام / 14 راحة",cycle:repeat({type:"day",label:"نهاري",start:"07:00",end:"19:00"},28).concat(repeat({type:"off",label:"راحة"},14))},
+      "7-7":{name:"7 دوام / 7 راحة",cycle:repeat({type:"day",label:"نهاري",start:"07:00",end:"19:00"},7).concat(repeat({type:"off",label:"راحة"},7))},
+      "4-4":{name:"4 دوام / 4 راحة",cycle:repeat({type:"day",label:"نهاري",start:"07:00",end:"19:00"},4).concat(repeat({type:"off",label:"راحة"},4))},
+      "2d2n4":{name:"2 نهاري / 2 ليلي / 4 راحة",cycle:repeat({type:"day",label:"نهاري",start:"07:00",end:"19:00"},2).concat(repeat({type:"night",label:"ليلي",start:"19:00",end:"07:00"},2),repeat({type:"off",label:"راحة"},4))},
+      "5-2":{name:"5 دوام / يومان راحة",cycle:repeat({type:"day",label:"نهاري",start:"08:00",end:"16:00"},5).concat(repeat({type:"off",label:"راحة"},2))}
+    }
+  }
+  function clone(v){return JSON.parse(JSON.stringify(v))}
+  function repeat(v,n){var a=[];for(var i=0;i<n;i++)a.push(clone(v));return a}
+  function normalizeEvent(e){
+    if(!e)return{type:"off",label:"راحة"};
+    if(typeof e==="string")e={type:e};
+    var type=e.type||"off";
+    var labels={work:"دوام",day:"نهاري",night:"ليلي",off:"راحة",annual:"سنوية",sick:"مرضية",emergency:"طارئة",comp:"تعويضية",unpaid:"بدون راتب",training:"تدريب",overtime:"إضافي",leave:"إجازة"};
+    return Object.assign({type:type,label:e.label||labels[type]||"وردية",start:e.start||((type==="night")?"19:00":"07:00"),end:e.end||((type==="night")?"07:00":"19:00"),note:"",location:"",job:""},e)
+  }
+  function isWork(e){return !!e&&WORK_TYPES.indexOf(e.type)>=0}
+  function isRest(e){return !e||REST_TYPES.indexOf(e.type)>=0}
+  function eventHours(e,fallback){e=normalizeEvent(e);var direct=Number(e.hours);if(isFinite(direct)&&direct>0)return direct;if(!e.start||!e.end)return Number(fallback)||0;var a=e.start.split(":").map(Number),b=e.end.split(":").map(Number),start=(a[0]||0)*60+(a[1]||0),end=(b[0]||0)*60+(b[1]||0);if(end<=start)end+=1440;var value=(end-start)/60;return value>0&&value<=24?value:(Number(fallback)||0)}
+  function leaveOn(data,k){
+    var list=(data&&data.leaves)||[];
+    for(var i=list.length-1;i>=0;i--){var l=list[i];if(k>=l.start&&k<=l.end)return l}
+    return null
+  }
+  function baseEvents(data,k){
+    data=data||{};var cycle=data.cycle||[];if(!cycle.length)return[normalizeEvent("off")];
+    var pos=mod(diffDays(data.anchor||k,k),cycle.length),slot=cycle[pos];
+    return(Array.isArray(slot)?slot:[slot]).map(normalizeEvent)
+  }
+  function eventsForDate(data,k){
+    var leave=leaveOn(data,k);
+    if(leave){
+      var le=normalizeEvent({type:leave.type||"annual",label:leave.name||leave.label,half:!!leave.half,note:leave.reason||""});
+      if(leave.half)return[le].concat(baseEvents(data,k).filter(isWork));
+      return[le]
+    }
+    var over=data&&data.overrides&&data.overrides[k];
+    if(over!==undefined&&over!==null)return(Array.isArray(over)?over:[over]).map(normalizeEvent);
+    return baseEvents(data,k)
+  }
+  function primaryEvent(data,k){
+    var ev=eventsForDate(data,k);
+    return ev.find(function(x){return isWork(x)})||ev[0]||normalizeEvent("off")
+  }
+  function zonedParts(ms,tz){
+    var parts=new Intl.DateTimeFormat("en-CA",{timeZone:tz||"Asia/Muscat",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(new Date(ms)),o={};
+    parts.forEach(function(p){if(p.type!=="literal")o[p.type]=Number(p.value)});
+    return{year:o.year,month:o.month,day:o.day,hour:o.hour,minute:o.minute,second:o.second}
+  }
+  function dateKeyAt(ms,tz){var p=zonedParts(ms,tz);return p.year+"-"+pad(p.month)+"-"+pad(p.day)}
+  function zonedEpoch(k,time,tz){
+    var p=k.split("-").map(Number),t=(time||"00:00").split(":").map(Number),target=Date.UTC(p[0],p[1]-1,p[2],t[0]||0,t[1]||0,0),guess=target;
+    for(var i=0;i<4;i++){var z=zonedParts(guess,tz),shown=Date.UTC(z.year,z.month-1,z.day,z.hour,z.minute,z.second),delta=target-shown;guess+=delta;if(!delta)break}
+    return guess
+  }
+  function interval(k,e,tz){
+    e=normalizeEvent(e);if(!isWork(e))return null;
+    var start=zonedEpoch(k,e.start,tz),end=zonedEpoch(k,e.end,tz);
+    if(end<=start)end=zonedEpoch(addDays(k,1),e.end,tz);
+    return{start:start,end:end,event:e,date:k}
+  }
+  function nextShift(data,now,tz,limit){
+    var today=dateKeyAt(now,tz),best=null;
+    for(var i=-1;i<(limit||740);i++){
+      var k=addDays(today,i),ev=eventsForDate(data,k);
+      for(var j=0;j<ev.length;j++){var it=interval(k,ev[j],tz);if(it&&it.end>now&&(!best||it.start<best.start))best=it}
+      if(best&&best.start>now&&i>3)break
+    }
+    return best
+  }
+  function nowStatus(data,now,tz){
+    now=now||Date.now();tz=tz||"Asia/Muscat";var today=dateKeyAt(now,tz),active=null;
+    [addDays(today,-1),today].forEach(function(k){eventsForDate(data,k).forEach(function(e){var it=interval(k,e,tz);if(it&&it.start<=now&&it.end>now)active=it})});
+    var next=nextShift(data,now,tz);
+    if(active)return{kind:"work",label:"أنت في الدوام الآن",event:active.event,until:active.end,nextShift:next,date:today};
+    var ev=primaryEvent(data,today),leave=leaveOn(data,today);
+    if(leave)return{kind:"leave",label:"أنت في إجازة الآن",event:ev,until:next?next.start:null,nextShift:next,date:today};
+    if(isRest(ev))return{kind:"off",label:"أنت في يوم راحة",event:ev,until:next?next.start:null,nextShift:next,date:today};
+    if(next&&next.start>now)return{kind:"upcoming",label:"ورديتك تبدأ بعد…",event:next.event,until:next.start,nextShift:next,date:today};
+    return{kind:"off",label:"لا توجد وردية الآن",event:ev,until:next?next.start:null,nextShift:next,date:today}
+  }
+  function restBlock(data,from,includeCurrent,limit){
+    var start=null,k=from,max=limit||740;
+    if(includeCurrent&&isRest(primaryEvent(data,k)))start=k;
+    for(var i=0;i<max&&!start;i++){var x=addDays(k,i);if(isRest(primaryEvent(data,x)))start=x}
+    if(!start)return null;
+    var end=start;
+    for(var j=1;j<max;j++){var n=addDays(start,j);if(!isRest(primaryEvent(data,n)))break;end=n}
+    var ret=addDays(end,1),first=eventsForDate(data,ret).find(isWork)||primaryEvent(data,ret);
+    return{start:start,end:end,returnDate:ret,length:diffDays(start,end)+1,firstShift:first}
+  }
+  function workDaysBetween(data,a,b){
+    var n=0;for(var d=toDay(a),e=toDay(b);d<e;d++)if(eventsForDate(data,fromDay(d)).some(isWork))n++;return n
+  }
+  function monthStats(data,y,m,hours){
+    var total=daysInMonth(y,m),out={workDays:0,offDays:0,leaveDays:0,night:0,day:0,overtime:0,overtimeHours:0,hours:0};
+    for(var d=1;d<=total;d++){var k=y+"-"+pad(m)+"-"+pad(d),ev=eventsForDate(data,k),worked=ev.some(isWork),leave=leaveOn(data,k);if(worked)out.workDays++;else out.offDays++;if(leave)out.leaveDays+=(leave.half?.5:1);ev.forEach(function(e){if(e.type==="night")out.night++;if(e.type==="day"||e.type==="work")out.day++;if(e.type==="overtime")out.overtime++;if(isWork(e)){var sh=eventHours(e,hours||12);out.hours+=sh;if(e.type==="overtime")out.overtimeHours+=sh}})}
+    return out
+  }
+  function annualLeaveUsed(data,year,deductRest){
+    var used=0;(data.leaves||[]).filter(function(l){return(l.type||"annual")==="annual"}).forEach(function(l){range(l.start,l.end).forEach(function(k){if(Number(k.slice(0,4))!==year)return;if(l.half){used+=.5;return}if(deductRest||baseEvents(data,k).some(isWork))used++})});return used
+  }
+  function bestLeave(data,from,horizon,maxLeave){
+    var candidates=[],seen={},days=horizon||240,max=maxLeave||3,startDay=toDay(from);
+    for(var s=-7;s<days;s++){
+      for(var len=5;len<=16;len++){
+        var a=fromDay(startDay+s),b=fromDay(startDay+s+len-1),work=[];
+        for(var d=toDay(a);d<=toDay(b);d++){var k=fromDay(d);if(eventsForDate(data,k).some(isWork))work.push(k)}
+        if(work.length<1||work.length>max)continue;
+        var left=primaryEvent(data,addDays(a,-1)),right=primaryEvent(data,addDays(b,1));
+        if(!isWork(left)&&!isWork(right)&&!seen[work.join("|")]){
+          seen[work.join("|")]=1;candidates.push({start:work[0],end:work[work.length-1],leaveDays:work.length,totalBreak:len,blockStart:a,blockEnd:b,score:len*10-work.length})
+        }
+      }
+    }
+    return candidates.sort(function(a,b){return b.score-a.score||a.start.localeCompare(b.start)}).slice(0,5)
+  }
+  function longestStreak(data,from,days,predicate){
+    var best=0,current=0,bestStart=from,start=from;
+    for(var i=0;i<days;i++){var k=addDays(from,i),ok=predicate(eventsForDate(data,k),k);if(ok){if(!current)start=k;current++;if(current>best){best=current;bestStart=start}}else current=0}
+    return{length:best,start:bestStart,end:addDays(bestStart,Math.max(0,best-1))}
+  }
+  return{DAY:DAY,presets:presets,clone:clone,repeat:repeat,toDay:toDay,fromDay:fromDay,addDays:addDays,diffDays:diffDays,range:range,daysInMonth:daysInMonth,monthKeyParts:monthKeyParts,normalizeEvent:normalizeEvent,isWork:isWork,isRest:isRest,eventHours:eventHours,leaveOn:leaveOn,baseEvents:baseEvents,eventsForDate:eventsForDate,primaryEvent:primaryEvent,zonedParts:zonedParts,dateKeyAt:dateKeyAt,zonedEpoch:zonedEpoch,interval:interval,nextShift:nextShift,nowStatus:nowStatus,restBlock:restBlock,workDaysBetween:workDaysBetween,monthStats:monthStats,annualLeaveUsed:annualLeaveUsed,bestLeave:bestLeave,longestStreak:longestStreak};
+});</script>
+<script data-inline="app">(function(){
+"use strict";
+var C=window.DawamiCore,KEY="dawami-data-v3",BACKUP="dawami-v3-legacy-backup";
+var DEFAULT_COLORS={accent:"#3B82F6",work:"#F6C453",off:"#64748B",extra:"#FF8A4C",annual:"#58C7E3",sick:"#ED6F7D",training:"#36B594",official:"#9B6CF2"};
+var PALETTES={
+ gold:{accent:"#3B82F6",work:"#F6C453",off:"#64748B",extra:"#FF8A4C",annual:"#58C7E3",sick:"#ED6F7D",training:"#36B594",official:"#9B6CF2"},
+ ocean:{accent:"#2585D9",work:"#55BDEB",off:"#4E7185",extra:"#F59E5B",annual:"#38BDF8",sick:"#F4728A",training:"#34D399",official:"#8B7CF6"},
+ mint:{accent:"#18A879",work:"#52C99B",off:"#5B746B",extra:"#F59E5B",annual:"#4CB8D4",sick:"#EC7A86",training:"#2DB486",official:"#8A74D6"},
+ coral:{accent:"#F26A4B",work:"#FF9376",off:"#82645E",extra:"#FFA34F",annual:"#5CBFDB",sick:"#E85C6A",training:"#43B99A",official:"#9A70DB"},
+ violet:{accent:"#7C5CE4",work:"#AD91F7",off:"#716987",extra:"#FF9860",annual:"#5BC0DE",sick:"#EC708C",training:"#49B99D",official:"#8F61E9"}
+};
+var data=loadData(),S=data.schedule,tz=data.settings.timezone||"Asia/Muscat",today=C.dateKeyAt(Date.now(),tz),month=today.slice(0,7)+"-01",page="home",selectedDay=today,setupPattern="14-14",timerTarget=null,notifyTimer=null,holidayStore=read("dawami-oman-holidays-v3")||{years:{}},holidayLoading={};
+var months=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+
+
+
+function $(q,r){return(r||document).querySelector(q)}
+function $(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q))}
+function copy(x){return JSON.parse(JSON.stringify(x))}
+function read(k){try{var v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}}
+function defaults(){return{version:4,onboarded:false,profile:{name:""},settings:{timezone:"Asia/Muscat",theme:"dark",dayStart:"07:00",dayEnd:"19:00",nightStart:"19:00",nightEnd:"07:00",notificationEnabled:false,reminderBefore:60,colorTheme:"gold",colors:copy(DEFAULT_COLORS)},schedule:{anchor:C.dateKeyAt(Date.now(),"Asia/Muscat"),patternId:"14-14",patternName:"14 يوم دوام / 14 يوم إجازة",cycle:copy(C.presets()["14-14"].cycle),overrides:{},leaves:[]},migratedFrom:[]}}
+function normalize(d){var base=defaults(),savedSettings=d.settings||{},savedColors=savedSettings.colors;d.version=4;d.profile=Object.assign(base.profile,d.profile||{});d.settings=Object.assign(base.settings,savedSettings);d.settings.colors=Object.assign(copy(DEFAULT_COLORS),savedColors||(PALETTES[savedSettings.colorTheme]||{}));d.schedule=Object.assign(base.schedule,d.schedule||{});d.schedule.cycle=d.schedule.cycle&&d.schedule.cycle.length?d.schedule.cycle:base.schedule.cycle;d.schedule.overrides=d.schedule.overrides||{};d.schedule.leaves=d.schedule.leaves||[];d.migratedFrom=d.migratedFrom||[];return d}
+function loadData(){
+ var current=read(KEY);if(current&&current.schedule)return normalize(current);
+ var d=defaults(),oldP=read("dawami-cycle-prefs")||read("dawami-github-prefs"),oldO=read("dawami-cycle-overrides")||{},oldS=read("dawami-github-schedule");
+ if(oldP||oldS||Object.keys(oldO).length){
+  if(!localStorage.getItem(BACKUP))try{localStorage.setItem(BACKUP,JSON.stringify({savedAt:new Date().toISOString(),prefs:oldP,changes:oldO,schedule:oldS}))}catch(e){}
+  var p=oldP||{},on=Number(p.onDays||p.workDays||14),off=Number(p.offDays||p.restDays||14),work={type:"day",label:"دوام",start:p.shiftStart||"07:00",end:p.shiftEnd||"19:00"};
+  d.schedule.anchor=p.anchor||p.startDate||d.schedule.anchor;d.schedule.cycle=C.repeat(work,on).concat(C.repeat({type:"off",label:"إجازة"},off));if(p.anchorPhase==="off")d.schedule.cycle=C.repeat({type:"off",label:"إجازة"},off).concat(C.repeat(work,on));
+  d.schedule.patternId=on+"-"+off;d.schedule.patternName=on+" يوم دوام / "+off+" يوم إجازة";d.settings.theme=p.theme||"dark";d.settings.dayStart=work.start;d.settings.dayEnd=work.end;d.profile.name=p.name||"";d.onboarded=true;
+  Object.keys(oldO).forEach(function(k){var v=oldO[k];d.schedule.overrides[k]=v==="off"?{type:"off",label:"إجازة"}:v==="work"?copy(work):v});
+  var list=Array.isArray(oldS)?oldS:(oldS&&(oldS.days||oldS.entries||oldS.schedule));if(Array.isArray(list))list.forEach(function(x){if(x&&x.date)d.schedule.overrides[x.date.slice(0,10)]={type:mapType(x.type||x.status),label:x.label,start:x.start||x.startTime,end:x.end||x.endTime,note:x.note||""}});
+  d.migratedFrom=["النسخة السابقة"];
+ }
+ d=normalize(d);try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}return d
+}
+function save(msg){try{localStorage.setItem(KEY,JSON.stringify(data));if(msg)toast(msg)}catch(e){toast("ما قدرت أحفظ البيانات")}}
+function mapType(v){v=String(v||"").toLowerCase();if(/night|ليل/.test(v))return"night";if(/off|rest|راح|إجاز|اجاز/.test(v))return"off";return"day"}
+function add(k,n){return C.addDays(k,n)}
+function parts(k){return C.monthKeyParts(k)}
+function fmtKey(k,o){if(!k)return"—";return new Intl.DateTimeFormat("ar-OM",Object.assign({timeZone:"UTC",day:"numeric",month:"short"},o||{})).format(new Date(k+"T12:00:00Z"))}
+function fmtTime(ms,o){if(!ms)return"—";return new Intl.DateTimeFormat("ar-OM",Object.assign({timeZone:tz,weekday:"long",day:"numeric",month:"long",hour:"numeric",minute:"2-digit"},o||{})).format(new Date(ms))}
+function pad(n){return String(Math.max(0,n)).padStart(2,"0")}
+function remaining(ms){var m=Math.max(0,Math.floor(ms/60000)),d=Math.floor(m/1440),h=Math.floor((m%1440)/60);return pad(d)+" يوم : "+pad(h)+" ساعة : "+pad(m%60)+" دقيقة"}
+function esc(v){return String(v||"").replace(/[&<>"]/g,function(x){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[x]})}
+function holidayName(h){var n=String((h&&(h.localName||h.name))||"عطلة رسمية"),e=String((h&&h.name)||n).toLowerCase();if(/[\u0600-\u06ff]/.test(n))return n;if(/fitr/.test(e))return"عيد الفطر";if(/adha/.test(e))return"عيد الأضحى";if(/prophet|mawlid/.test(e))return"المولد النبوي";if(/islamic new year|hijri/.test(e))return"رأس السنة الهجرية";if(/national day/.test(e))return"العيد الوطني";if(/accession|renaissance/.test(e))return"يوم تولّي السلطان";if(/ascension|isra/.test(e))return"الإسراء والمعراج";return n}
+function holidayFor(k){var y=holidayStore.years&&holidayStore.years[k.slice(0,4)],list=y&&(y.items||y);return Array.isArray(list)?list.find(function(x){return x.date===k}):null}
+async function ensureHolidays(year){var key=String(year),saved=holidayStore.years&&holidayStore.years[key],fresh=saved&&saved.fetchedAt&&Date.now()-saved.fetchedAt<86400000;if(fresh||holidayLoading[key])return;holidayLoading[key]=true;var sync=$("#holidaySync");if(sync)sync.textContent="جاري تحديث عطلات سلطنة عُمان…";try{var url="holidays-om.json?build=20260828-2253",local=await fetch(url,{cache:"reload"});if(!local.ok)throw new Error("holiday file");var bundle=await local.json(),list=bundle.years&&bundle.years[key];if(!Array.isArray(list)||!list.length)throw new Error("holiday year");holidayStore.years=holidayStore.years||{};holidayStore.years[key]={fetchedAt:Date.now(),items:list.map(function(x){return{date:x.date,name:x.name||"",localName:x.localName||""}})};localStorage.setItem("dawami-oman-holidays-v3",JSON.stringify(holidayStore));if(sync)sync.textContent="العطلات الرسمية محدثة • الهجرية حسب الإعلان الرسمي";renderCalendar();renderHome()}catch(e){if(sync)sync.textContent=saved?"نعرض آخر نسخة محفوظة من العطلات":"ستظهر العطلات تلقائيًا عند توفر الاتصال"}finally{delete holidayLoading[key]}}
+function textFor(e){if(!e)return"إجازة";var t=e.type;if(t==="night")return"دوام ليلي";if(t==="off")return"إجازة";if(t==="annual")return"إجازة سنوية";if(t==="leave"||t==="comp"||t==="unpaid"||t==="emergency")return"إجازة مسجلة";if(t==="sick")return"مرضية";if(t==="training")return"تدريب";if(t==="overtime")return"إكسترا دي";return"دوام"}
+function classFor(e){if(!e)return"off";if(e.type==="night")return"night";if(e.type==="off")return"off";if(e.type==="overtime")return"extra";if(e.type==="training")return"training";if(e.type==="sick")return"sick";if(["annual","leave","comp","unpaid","emergency"].indexOf(e.type)>=0)return"leave";return"work"}
+function lastWork(k){for(var i=1;i<500;i++){var d=add(k,-i),ev=C.eventsForDate(S,d).filter(C.isWork);if(ev.length){var e=ev[ev.length-1];return C.interval(d,e,tz)}}return null}
+function exactBlock(block){if(!block)return null;var before=lastWork(block.start),next=C.nextShift(S,C.zonedEpoch(block.returnDate,"00:00",tz),tz);return{start:before?before.end:C.zonedEpoch(block.start,"00:00",tz),end:next?next.start:C.zonedEpoch(add(block.end,1),"00:00",tz),next:next}}
+function toast(msg){var e=$("#toast");e.textContent=msg;e.classList.add("show");clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove("show")},1800)}
+function open(id){$("#"+id).classList.add("open");document.body.classList.add("modal-open");if(id==="dayModal"&&!(history.state&&history.state.dawamiModal===id))history.pushState({dawamiPage:page,dawamiModal:id},"",location.pathname+location.search+"#"+page+"/day")}
+function close(id,fromHistory){$("#"+id).classList.remove("open");if(!$(".modal.open"))document.body.classList.remove("modal-open");if(!fromHistory&&history.state&&history.state.dawamiModal===id)history.back()}
+
+function applyPalette(){var colors=Object.assign(copy(DEFAULT_COLORS),data.settings.colors||{}),root=document.documentElement;data.settings.colors=colors;Object.keys(colors).forEach(function(k){root.style.setProperty("--"+(k==="off"?"off":k)+"-color",colors[k])});root.style.setProperty("--accent",colors.accent);root.style.setProperty("--yellow",colors.work);root.style.setProperty("--black",colors.off)}
+function renderAll(){S=data.schedule;tz=data.settings.timezone||"Asia/Muscat";today=C.dateKeyAt(Date.now(),tz);document.documentElement.dataset.theme=data.settings.theme;applyPalette();var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=data.settings.theme==="dark"?"#070A10":"#F3F6FA";$("#themeBtn").classList.toggle("moon",data.settings.theme!=="dark");$("#themeBtn").setAttribute("aria-label",data.settings.theme==="dark"?"تشغيل الوضع الفاتح":"تشغيل الوضع الداكن");renderHome();renderCalendar();renderSettings()}
+function renderHome(){
+ var now=Date.now(),state=C.nowStatus(S,now,tz),currentRest=state.kind==="off"||state.kind==="leave",currentBlock=C.restBlock(S,today,currentRest),upcomingFrom=currentRest&&state.nextShift?state.nextShift.date:today,block=C.restBlock(S,upcomingFrom,false),exact=exactBlock(block),card=$("#statusCard"),cyclePos=((C.diffDays(S.anchor,today)%S.cycle.length)+S.cycle.length)%S.cycle.length+1;
+ card.className="status "+(state.kind==="work"?"work":state.kind==="upcoming"?"soon":"off");
+ if(state.kind==="work"){$("#statusTitle").textContent="أنت مداوم الحين";$("#statusSub").textContent=textFor(state.event)+" من "+state.event.start+" إلى "+state.event.end;$("#countLabel").textContent="باقي على الإجازة";timerTarget=exact&&exact.start}
+ else if(currentRest){$("#statusTitle").textContent="أنت في الإجازة";$("#statusSub").textContent="استمتع بوقتك، بنخبرك متى ترجع الدوام";$("#countLabel").textContent="باقي على الدوام";timerTarget=state.nextShift&&state.nextShift.start}
+ else{$("#statusTitle").textContent="دوامك يبدأ بعد…";$("#statusSub").textContent=textFor(state.nextShift&&state.nextShift.event)+" الساعة "+((state.nextShift&&state.nextShift.event.start)||"—");$("#countLabel").textContent="باقي على بداية الدوام";timerTarget=state.nextShift&&state.nextShift.start}
+ $("#cycleDay").textContent=cyclePos;$("#cycleLength").textContent="من "+S.cycle.length+" يوم";$("#cycleRing").style.setProperty("--p",(cyclePos/S.cycle.length*100)+"%");
+ var workLeft=block?C.workDaysBetween(S,today,block.start):0;$("#daysToLeave").textContent=block?workLeft+" يوم":"—";$("#leaveHint").textContent=block?"دوام متبقٍ فعليًا":"ما فيه إجازة قريبة";
+ $("#leaveStartShort").textContent=exact?new Intl.DateTimeFormat("ar-OM",{timeZone:tz,day:"numeric",month:"short"}).format(new Date(exact.start)):"—";$("#leaveStartFull").textContent=exact?fmtTime(exact.start,{weekday:"long",hour:"numeric",minute:"2-digit"}):"—";
+ $("#returnShort").textContent=exact&&exact.next?new Intl.DateTimeFormat("ar-OM",{timeZone:tz,day:"numeric",month:"short"}).format(new Date(exact.next.start)):"—";$("#returnFull").textContent=exact&&exact.next?fmtTime(exact.next.start,{weekday:"long",hour:"numeric",minute:"2-digit"}):"—";var tp=parts(today),monthly=C.monthStats(S,tp.year,tp.month);$("#monthWorkDays").textContent=monthly.workDays+" يوم";$("#monthWorkHint").textContent=months[tp.month-1]+" • محسوب من جدولك";
+ renderCountdown();var strip=$("#nextStrip");strip.innerHTML="";for(var i=0;i<10;i++){var k=add(today,i),e=C.primaryEvent(S,k),holiday=holidayFor(k),b=document.createElement("button");b.className="strip-day "+classFor(e)+(i===0?" today":"")+(holiday?" official":"");b.innerHTML="<small>"+(i===0?"اليوم":i===1?"بكرة":fmtKey(k,{weekday:"short"}))+"</small><b>"+Number(k.slice(8))+"</b><span>"+textFor(e)+"</span>"+(holiday?'<small class="official-name">'+esc(holidayName(holiday))+"</small>":"");b.onclick=(function(x){return function(){showDay(x)}})(k);strip.appendChild(b)}ensureHolidays(Number(today.slice(0,4)))
+}
+function renderCountdown(){var box=$("#countdown");if(timerTarget){var m=Math.max(0,Math.floor((timerTarget-Date.now())/60000)),d=Math.floor(m/1440),hr=Math.floor((m%1440)/60),min=m%60;box.className="countdown-parts";box.innerHTML="<span><b>"+pad(d)+"</b><small>يوم</small></span><i>:</i><span><b>"+pad(hr)+"</b><small>ساعة</small></span><i>:</i><span><b>"+pad(min)+"</b><small>دقيقة</small></span>"}else{box.className="countdown-parts empty";box.textContent="ما فيه موعد قريب"}if(timerTarget&&Date.now()>timerTarget)renderHome()}
+function renderCalendar(){
+ var p=parts(month);$("#monthLabel").textContent=months[p.month-1]+" "+p.year;var first=p.year+"-"+String(p.month).padStart(2,"0")+"-01",offset=(new Date(first+"T12:00:00Z").getUTCDay()+6)%7,start=add(first,-offset),grid=$("#calendarGrid");grid.innerHTML="";
+ for(var i=0;i<42;i++){var k=add(start,i),e=C.primaryEvent(S,k),holiday=holidayFor(k),b=document.createElement("button"),outside=parts(k).month!==p.month;b.className="day "+classFor(e)+(outside?" out":"")+(k===today?" today":"")+(S.overrides[k]!==undefined?" manual":"")+(e.note?" has-note":"")+(holiday?" official":"");b.innerHTML="<em>"+Number(k.slice(8))+"</em><b>"+textFor(e)+"</b>"+(holiday?'<small class="official-name">'+esc(holidayName(holiday))+"</small>":"");b.onclick=(function(x){return function(){showDay(x)}})(k);grid.appendChild(b)}
+ ensureHolidays(p.year)
+}
+function showDay(k){selectedDay=k;var events=C.eventsForDate(S,k),e=events[0]||{type:"off"},holiday=holidayFor(k),special=["overtime","annual","sick","training"],bits=[];$("#selectedDate").textContent=fmtKey(k,{weekday:"long",day:"numeric",month:"long",year:"numeric"});$("#selectedStatus").textContent=(holiday?holidayName(holiday)+" • ":"")+events.map(textFor).join("، ");if(holiday)bits.push("عطلة رسمية في سلطنة عُمان");if(C.isWork(e)&&e.start&&e.end)bits.push("من "+e.start+" إلى "+e.end);if(e.job||e.location)bits.push("الموقع: "+(e.job||e.location));if(e.note)bits.push(e.note);$("#selectedTime").textContent=bits.join(" • ")||"ما عندك إضافة على هذا اليوم";$("#dayType").value=special.indexOf(e.type)>=0?e.type:"overtime";$("#dayStart").value=e.start||data.settings.dayStart;$("#dayEnd").value=e.end||data.settings.dayEnd;$("#dayJob").value=e.job||e.location||"";$("#dayNote").value=e.note||"";selectDayType($("#dayType").value);$("#toggleEditDay").textContent=S.overrides[k]!==undefined?"تعديل الإضافة":"أضف على هذا اليوم";$("#editDay").hidden=true;open("dayModal")}
+function selectDayType(type){$("#dayType").value=type;var timed=type==="overtime"||type==="training";$("#dayTimes").hidden=!timed;if(timed&&!$("#dayStart").value){$("#dayStart").value=data.settings.dayStart;$("#dayEnd").value=data.settings.dayEnd}$("[data-day-type]").forEach(function(b){b.classList.toggle("active",b.dataset.dayType===type)})}
+function moveMonth(n){var p=parts(month),d=new Date(Date.UTC(p.year,p.month-1+n,1));month=d.getUTCFullYear()+"-"+String(d.getUTCMonth()+1).padStart(2,"0")+"-01";renderCalendar()}
+function reminderLabel(min){min=Number(min)||60;if(min===30)return"30 دقيقة";if(min===60)return"ساعة";if(min===120)return"ساعتين";if(min===720)return"12 ساعة";if(min===1440)return"يوم";return min+" دقيقة"}
+function renderSettings(){
+ var id=C.presets()[S.patternId]?S.patternId:"14-14";$("#settingsName").value=data.profile.name||"";$("#timezoneSelect").value=data.settings.timezone||"Asia/Muscat";$("#reminderBefore").value=String(data.settings.reminderBefore||60);$("#patternSelect").value=id;$("#anchorDate").value=S.anchor;$("#workStart").value=data.settings.dayStart;$("#workEnd").value=data.settings.dayEnd;$("#nightStart").value=data.settings.nightStart;$("#nightEnd").value=data.settings.nightEnd;$("#nightTimes").hidden=id!=="2d2n4";toggleSwitch("darkSwitch",data.settings.theme==="dark");toggleSwitch("notifySwitch",data.settings.notificationEnabled);$("#notifyText").textContent=data.settings.notificationEnabled?"مفعل قبل الدوام بـ"+reminderLabel(data.settings.reminderBefore):"غير مفعل";$("#reminderBefore").disabled=!data.settings.notificationEnabled;document.querySelectorAll("[data-palette]").forEach(function(b){var active=b.dataset.palette===(data.settings.colorTheme||"gold");b.classList.toggle("active",active);b.setAttribute("aria-pressed",active?"true":"false")});document.querySelectorAll("[data-color-key]").forEach(function(input){input.value=(data.settings.colors&&data.settings.colors[input.dataset.colorKey])||DEFAULT_COLORS[input.dataset.colorKey]});renderCyclePreview()
+}
+function renderCyclePreview(){var box=$("#cyclePreview");box.innerHTML=S.cycle.map(function(e){return'<i class="'+classFor(C.normalizeEvent(e))+'"></i>'}).join("")}
+function toggleSwitch(id,on){$("#"+id).classList.toggle("on",!!on)}
+function applyTimes(cycle){return cycle.map(function(e){e=copy(e);if(e.type==="day"||e.type==="work"){e.label="دوام";e.start=data.settings.dayStart;e.end=data.settings.dayEnd}if(e.type==="night"){e.label="دوام ليلي";e.start=data.settings.nightStart;e.end=data.settings.nightEnd}if(e.type==="off")e.label="إجازة";return e})}
+function patternName(id){var names={"14-14":"14 يوم دوام / 14 يوم إجازة","28-14":"28 يوم دوام / 14 يوم إجازة","7-7":"7 أيام دوام / 7 أيام إجازة","4-4":"4 أيام دوام / 4 أيام إجازة","2d2n4":"يومان نهاري / يومان ليلي / 4 أيام إجازة"};return names[id]||names["14-14"]}
+function savePattern(){
+ var id=$("#patternSelect").value,anchor=$("#anchorDate").value;if(!anchor){toast("حدد أول يوم في دورة الدوام");return}data.profile.name=$("#settingsName").value.trim();data.settings.timezone=$("#timezoneSelect").value||"Asia/Muscat";data.settings.reminderBefore=Number($("#reminderBefore").value)||60;data.settings.dayStart=$("#workStart").value||"07:00";data.settings.dayEnd=$("#workEnd").value||"19:00";data.settings.nightStart=$("#nightStart").value||"19:00";data.settings.nightEnd=$("#nightEnd").value||"07:00";S.anchor=anchor;S.patternId=id;S.patternName=patternName(id);S.cycle=applyTimes(copy(C.presets()[id].cycle));save("تم حفظ نمط دوامك");renderAll();showPage("calendar")
+}
+function showPage(id,opts){if(!$("#"+id))id="calendar";page=id;document.body.classList.add("panel-open");$(".page").forEach(function(x){x.classList.toggle("active",x.id===id||((id==="home"||id==="settings")&&x.id==="calendar"))});$("[data-page]").forEach(function(x){x.classList.toggle("active",x.dataset.page===id)});window.scrollTo({top:0,behavior:"auto"});if(!(opts&&opts.fromHistory)){var next=location.pathname+location.search+"#"+id;if(opts&&opts.replace)history.replaceState({dawamiPage:id},"",next);else if(!(history.state&&history.state.dawamiPage===id&&!history.state.dawamiModal))history.pushState({dawamiPage:id},"",next)}if(id==="calendar")renderCalendar();if(id==="settings")renderSettings()}
+function buildSetup(){
+ var ids=["14-14","28-14","7-7","4-4","2d2n4"],box=$("#setupPatterns");box.innerHTML=ids.map(function(id){return'<button class="pattern" data-setup-pattern="'+id+'">'+patternName(id)+"</button>"}).join("");$("[data-setup-pattern]",box).forEach(function(b){b.onclick=function(){setupPattern=b.dataset.setupPattern;$("[data-setup-pattern]",box).forEach(function(x){x.classList.toggle("active",x===b)});renderSetupPreview()}});setupPattern=C.presets()[S.patternId]?S.patternId:"14-14";var active=$('[data-setup-pattern="'+setupPattern+'"]',box);if(active)active.classList.add("active");$("#setupName").value=data.profile.name||"";$("#setupAnchor").value=S.anchor||today;$("#setupStart").value=data.settings.dayStart;$("#setupEnd").value=data.settings.dayEnd;renderSetupPreview()
+}
+function renderSetupPreview(){var cyc=C.presets()[setupPattern].cycle,box=$("#setupPreview");box.innerHTML="";for(var i=0;i<28;i++){var e=C.normalizeEvent(cyc[i%cyc.length]),x=document.createElement("i");x.className=classFor(e);box.appendChild(x)}}
+function finishSetup(){var anchor=$("#setupAnchor").value;if(!anchor){toast("حدد أول يوم دوام");return}data.profile.name=$("#setupName").value.trim();data.settings.dayStart=$("#setupStart").value||"07:00";data.settings.dayEnd=$("#setupEnd").value||"19:00";S.anchor=anchor;S.patternId=setupPattern;S.patternName=patternName(setupPattern);S.cycle=applyTimes(copy(C.presets()[setupPattern].cycle));data.onboarded=true;save();close("setupModal");renderAll();toast("تمام، حسبنا دوامك وإجازتك")}
+async function toggleNotify(){
+ if(data.settings.notificationEnabled){data.settings.notificationEnabled=false;clearTimeout(notifyTimer);save();renderSettings();toast("تم إيقاف التنبيه");return}
+ if(!("Notification"in window)||!("serviceWorker"in navigator)){toast("التنبيه غير مدعوم في هذا المتصفح");return}var result=Notification.permission;if(result==="default")result=await Notification.requestPermission();if(result!=="granted"){toast("ما تم السماح بالتنبيه");return}data.settings.notificationEnabled=true;save();renderSettings();scheduleNotify();toast("تم تفعيل التنبيه داخل التطبيق")
+}
+function scheduleNotify(){clearTimeout(notifyTimer);if(!data.settings.notificationEnabled||!("Notification"in window)||Notification.permission!=="granted")return;var before=Number(data.settings.reminderBefore)||60,next=C.nextShift(S,Date.now(),tz),at=next&&next.start-before*60000-Date.now();if(at>0&&at<2147483647)notifyTimer=setTimeout(async function(){try{var reg=await navigator.serviceWorker.ready;reg.showNotification("دوامك بعد "+reminderLabel(before),{body:textFor(next.event)+" يبدأ "+fmtTime(next.start),icon:"icon.svg",tag:"dawami"})}catch(e){}scheduleNotify()},at)}
+async function forceSiteUpdate(){try{toast("جاري تحديث الموقع…");if("serviceWorker"in navigator){var regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(function(r){return r.unregister()}))}if("caches"in window){var keys=await caches.keys();await Promise.all(keys.map(function(k){return caches.delete(k)}))}setTimeout(function(){location.replace(location.pathname+"?fresh=6.0#"+page)},350)}catch(e){location.reload()}}
+function download(){var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="dawami-backup-"+new Date().toISOString().slice(0,10)+".json";a.click();setTimeout(function(){URL.revokeObjectURL(url)},500)}
+function bind(){
+ $("[data-page]").forEach(function(b){b.onclick=function(){showPage(b.dataset.page)}});$("[data-open-page]").forEach(function(b){b.onclick=function(){showPage(b.dataset.openPage)}});$("[data-close]").forEach(function(b){b.onclick=function(){close(b.dataset.close)}});
+ $("#themeBtn").onclick=function(){data.settings.theme=data.settings.theme==="dark"?"light":"dark";save();renderAll()};$("#darkSwitch").onclick=$("#themeBtn").onclick;
+ $("#nextMonth").onclick=function(){moveMonth(1)};$("#prevMonth").onclick=function(){moveMonth(-1)};$("#monthLabel").onclick=function(){month=today.slice(0,7)+"-01";renderCalendar()};
+ document.querySelectorAll("[data-palette]").forEach(function(b){b.onclick=function(){data.settings.colorTheme=b.dataset.palette;data.settings.colors=copy(PALETTES[b.dataset.palette]||DEFAULT_COLORS);save();renderAll();toast("تم تطبيق مجموعة الألوان")}});document.querySelectorAll("[data-color-key]").forEach(function(input){input.oninput=function(){data.settings.colorTheme="custom";data.settings.colors=data.settings.colors||copy(DEFAULT_COLORS);data.settings.colors[input.dataset.colorKey]=input.value;applyPalette();document.querySelectorAll("[data-palette]").forEach(function(b){b.classList.remove("active");b.setAttribute("aria-pressed","false")});save()};input.onchange=function(){renderAll();toast("تم حفظ اللون")}});$("#resetColors").onclick=function(){data.settings.colorTheme="gold";data.settings.colors=copy(DEFAULT_COLORS);save();renderAll();toast("رجعنا الألوان الأصلية")};$("#patternSelect").onchange=function(){$("#nightTimes").hidden=this.value!=="2d2n4";var temp=copy(C.presets()[this.value].cycle);$("#cyclePreview").innerHTML=temp.map(function(e){return'<i class="'+classFor(C.normalizeEvent(e))+'"></i>'}).join("")};$("#saveSettings").onclick=savePattern;$("#notifySwitch").onclick=toggleNotify;$("#reminderBefore").onchange=function(){data.settings.reminderBefore=Number(this.value)||60;save();renderSettings();scheduleNotify();toast("تم تغيير وقت التنبيه")};$("#forceUpdate").onclick=forceSiteUpdate;
+ $("#toggleEditDay").onclick=function(){$("#editDay").hidden=!$("#editDay").hidden;if(!$("#editDay").hidden)setTimeout(function(){$("#editDay").scrollIntoView({behavior:"smooth",block:"start"})},80)};$("[data-day-type]").forEach(function(b){b.onclick=function(){selectDayType(b.dataset.dayType)}});$("#dayType").onchange=function(){selectDayType(this.value)};
+ $("#saveDay").onclick=function(){var type=$("#dayType").value,timed=type==="overtime"||type==="training";S.overrides[selectedDay]={type:type,label:textFor({type:type}),start:timed?($("#dayStart").value||data.settings.dayStart):"",end:timed?($("#dayEnd").value||data.settings.dayEnd):"",job:$("#dayJob").value.trim(),note:$("#dayNote").value.trim()};save();close("dayModal");renderAll();toast("تم حفظ اليوم وتلوينه")};$("#resetDay").onclick=function(){delete S.overrides[selectedDay];save();close("dayModal");renderAll();toast("رجع اليوم لجدولك")};
+ $("#showSetup").onclick=function(){buildSetup();open("setupModal")};$("#finishSetup").onclick=finishSetup;$("#exportData").onclick=download;$("#importData").onchange=function(){var f=this.files[0];if(!f)return;var reader=new FileReader();reader.onload=function(){try{var d=JSON.parse(reader.result);if(!d.schedule){toast("الملف غير صحيح");return}data=normalize(d);S=data.schedule;save();renderAll();toast("تمت استعادة بياناتك")}catch(e){toast("الملف غير صحيح")}};reader.readAsText(f)};
+ var x=0;$("#calendarGrid").addEventListener("touchstart",function(e){x=e.changedTouches[0].clientX},{passive:true});$("#calendarGrid").addEventListener("touchend",function(e){var diff=e.changedTouches[0].clientX-x;if(Math.abs(diff)>55)moveMonth(diff>0?1:-1)},{passive:true});$(".modal").forEach(function(m){m.addEventListener("click",function(e){if(e.target===m&&m.id!=="setupModal")close(m.id)})});var sy=0;$(".sheet-head").addEventListener("touchstart",function(e){sy=e.changedTouches[0].clientY},{passive:true});$(".sheet-head").addEventListener("touchend",function(e){if(e.changedTouches[0].clientY-sy>70)close("dayModal")},{passive:true});window.addEventListener("keydown",function(e){if(e.key==="Escape"&&$(".modal.open")&&$(".modal.open").id!=="setupModal")close($(".modal.open").id)});window.addEventListener("popstate",function(e){var openModal=$(".modal.open");if(openModal){close(openModal.id,true);return}showPage((e.state&&e.state.dawamiPage)||"calendar",{fromHistory:true,instant:true})})
+}
+function init(){bind();var initial=location.hash.slice(1)==="settings"?"settings":"calendar";showPage(initial,{replace:true,instant:true});renderAll();setInterval(renderCountdown,1000);if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js?v=9.2").catch(function(){});scheduleNotify();if(!data.onboarded){buildSetup();open("setupModal")}}
+init();
+})();</script>
 </body>
 </html>
