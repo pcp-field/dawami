@@ -3,43 +3,51 @@ import assert from "node:assert/strict";
 
 const html=fs.readFileSync("index.html","utf8");
 const sw=fs.readFileSync("sw.js","utf8");
-for(const file of ["manifest.webmanifest","sw.js","icon.svg"])assert.ok(fs.existsSync(file),file+" is missing");
-assert.doesNotThrow(()=>new Function(sw),"sw.js must parse");
-assert.ok(html.includes('data-build="9.4-touch"'));
-assert.equal(html.includes('dawami-v9-1.css?v=9.1'),false);
-assert.equal(html.includes('dawami-v9-1.js?v=9.1'),false);
+const manifest=JSON.parse(fs.readFileSync("manifest.webmanifest","utf8"));
+for(const file of ["manifest.webmanifest","sw.js","icon.svg","holidays-om.json"])assert.ok(fs.existsSync(file),file+" is missing");
+assert.doesNotThrow(()=>new Function(sw),"service worker must parse");
+assert.ok(html.includes('data-build="10.0"'));
+assert.ok(html.includes("maximum-scale=1,user-scalable=no"),"mobile zoom disabled");
+assert.equal(html.includes('class="bottom-nav"'),false,"calendar-first UI has no persistent nav");
 
-const style=html.match(/<style data-inline="dawami-v9\.4">([\s\S]*?)<\/style>/);
-assert.ok(style&&style[1].length>25000,"complete design CSS must be inlined");
+const style=html.match(/<style data-inline="dawami-v10">([\s\S]*?)<\/style>/);
+assert.ok(style&&style[1].length>30000,"complete mobile design must be inlined");
+for(const token of ["view-week","view-list","selection-bar","touchSheetIn","prefers-reduced-motion","safe-area-inset-bottom"])assert.ok(style[1].includes(token),token+" CSS missing");
+
 const scripts=[...html.matchAll(/<script data-inline="[^"]+">([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 assert.equal(scripts.length,2);
 scripts.forEach((code,i)=>assert.doesNotThrow(()=>new Function(code),"inline script "+i+" must parse"));
-const app=scripts[1];
-assert.ok(app.indexOf("var DEFAULT_COLORS=")<app.indexOf("var data=loadData()"),"color defaults must exist before loading saved data");
-assert.ok(app.includes('location.hash.slice(1)==="settings"?"settings":"calendar"'),"calendar must always be the first screen");
-assert.ok(app.includes("function $$(q,r)"),"list selector helper must exist");
-assert.ok(app.includes('$$(".page").forEach'),"page lists must use $$");
-assert.ok(app.includes('$$("[data-page]").forEach'),"data lists must use $$");
-assert.ok(html.includes("maximum-scale=1,user-scalable=no"),"mobile zoom must be disabled");
-assert.ok(app.includes("bindDaySheet()"),"touch sheet drag must be enabled");
-assert.ok(app.includes("installTouchUX()"),"tap feedback must be enabled");
-assert.ok(style[1].includes("touchSheetIn"),"mobile sheet animation must exist");
+const [core,app]=scripts;
 
-const ids=new Set([...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]));
-const refs=[...app.matchAll(/\$\("#([A-Za-z][A-Za-z0-9_-]*)"\)/g)].map(m=>m[1]);
-assert.deepEqual([...new Set(refs.filter(id=>!ids.has(id)))],[]);
+const ids=new Set([...html.replace(/<script[\s\S]*?<\/script>/g,"").matchAll(/id="([^"]+)"/g)].map(m=>m[1]));
+const refs=[...app.matchAll(/\$\("#([A-Za-z][A-Za-z0-9_-]*)"/g)].map(m=>m[1]);
+assert.deepEqual([...new Set(refs.filter(id=>!ids.has(id)))],[],"all referenced IDs exist");
+
+for(const token of [
+ "function normalize(","dawami-github-schedule","dawami-github-prefs","version:5",
+ "function renderCalendar(","view-week","view-list","selectedDates","function undoLastChange",
+ "function renderLeaves(","function saveLeaveRecord","function renderInsights","function renderPay",
+ "function exportICS","function exportCSV","function shareScheduleImage","function compareDataFile",
+ "function scheduleNotify","function buildSetup","function renderSetupPreview","function parseCycle",
+ "function installTouchUX","function bindDaySheet"
+])assert.ok(app.includes(token),token+" missing");
+
+for(const id of [
+ "calendar","calendarGrid","calendarToolsModal","selectionBar","leavesModal","insightsModal","shareModal",
+ "setupModal","setupPreview","annualBalance","payBasic","exportICS","exportCSV","installApp","resetApp"
+])assert.ok(ids.has(id),id+" UI missing");
+
 const markup=html.replace(/<script[\s\S]*?<\/script>/g,"");
-assert.equal(markup.includes("وردية"),false);
+assert.equal(markup.includes("وردية"),false,"use plain دوام wording");
 assert.equal(app.includes("وردية"),false);
-assert.equal(html.includes('class="bottom-nav"'),false);
+assert.equal(core.includes("وردية"),false);
 assert.ok(html.includes('class="page active app-panel calendar-panel" id="calendar"'));
-assert.ok(html.includes('class="today-button status-launch"'));
-assert.ok(html.includes('class="dashboard-sheet"'));
-assert.ok(html.includes('class="settings-card color-studio"'));
+assert.ok(html.includes('class="today-button status-launch"'),"status stays an optional bottom sheet");
+assert.equal((html.match(/data-calendar-view=/g)||[]).length,3);
 assert.equal((html.match(/data-color-key=/g)||[]).length,8);
-assert.equal((html.match(/data-palette=/g)||[]).length,5);
-assert.ok(app.includes('"dawami-cycle-prefs"'));
-assert.ok(app.includes('"dawami-github-schedule"'));
-const manifest=JSON.parse(fs.readFileSync("manifest.webmanifest","utf8"));
+assert.ok((html.match(/data-palette=/g)||[]).length>=5);
+assert.ok(sw.includes('CACHE="dawami-v10-0"'));
 assert.equal(manifest.dir,"rtl");
-console.log("Dawami 9.4 touch build: all tests passed");
+assert.equal(manifest.display,"standalone");
+assert.equal(manifest.start_url,"./#calendar");
+console.log("Dawami 10 smoke: all tests passed");

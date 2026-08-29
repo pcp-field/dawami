@@ -35,7 +35,7 @@
     if(typeof e==="string")e={type:e};
     var type=e.type||"off";
     var labels={work:"دوام",day:"نهاري",night:"ليلي",off:"راحة",annual:"سنوية",sick:"مرضية",emergency:"طارئة",comp:"تعويضية",unpaid:"بدون راتب",training:"تدريب",overtime:"إضافي",leave:"إجازة"};
-    return Object.assign({type:type,label:e.label||labels[type]||"وردية",start:e.start||((type==="night")?"19:00":"07:00"),end:e.end||((type==="night")?"07:00":"19:00"),note:"",location:"",job:""},e)
+    return Object.assign({type:type,label:e.label||labels[type]||"دوام",start:e.start||((type==="night")?"19:00":"07:00"),end:e.end||((type==="night")?"07:00":"19:00"),note:"",location:"",job:""},e)
   }
   function isWork(e){return !!e&&WORK_TYPES.indexOf(e.type)>=0}
   function isRest(e){return !e||REST_TYPES.indexOf(e.type)>=0}
@@ -100,7 +100,7 @@
     if(leave)return{kind:"leave",label:"أنت في إجازة الآن",event:ev,until:next?next.start:null,nextShift:next,date:today};
     if(isRest(ev))return{kind:"off",label:"أنت في يوم راحة",event:ev,until:next?next.start:null,nextShift:next,date:today};
     if(next&&next.start>now)return{kind:"upcoming",label:"ورديتك تبدأ بعد…",event:next.event,until:next.start,nextShift:next,date:today};
-    return{kind:"off",label:"لا توجد وردية الآن",event:ev,until:next?next.start:null,nextShift:next,date:today}
+    return{kind:"off",label:"لا يوجد دوام الآن",event:ev,until:next?next.start:null,nextShift:next,date:today}
   }
   function restBlock(data,from,includeCurrent,limit){
     var start=null,k=from,max=limit||740;

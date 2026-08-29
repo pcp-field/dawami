@@ -1,22 +1,23 @@
 {
-  "name": "دوامي — دوامك وإجازتك بوضوح",
+  "id": "./",
+  "name": "دوامي — وقتك قدامك بوضوح",
   "short_name": "دوامي",
-  "description": "اعرف هل أنت مداوم وكم باقي على إجازتك من أول نظرة",
+  "description": "تطبيق عربي لإدارة جداول الدوام والإجازات، يعمل دون اتصال ويحفظ بياناتك على جهازك.",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./",
+  "start_url": "./#calendar",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#080c13",
-  "theme_color": "#0a0e16",
+  "orientation": "portrait-primary",
+  "background_color": "#070A10",
+  "theme_color": "#070A10",
   "categories": [
     "productivity",
     "utilities"
   ],
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "icon.svg?v=10.0",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -24,12 +25,24 @@
   ],
   "shortcuts": [
     {
-      "name": "التقويم",
+      "name": "فتح التقويم",
       "short_name": "التقويم",
       "url": "./#calendar",
       "icons": [
         {
-          "src": "icon.svg",
+          "src": "icon.svg?v=10.0",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "ملخص حالتي",
+      "short_name": "حالتي",
+      "url": "./#calendar",
+      "icons": [
+        {
+          "src": "icon.svg?v=10.0",
           "sizes": "any",
           "type": "image/svg+xml"
         }
