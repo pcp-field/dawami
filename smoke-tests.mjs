@@ -25,7 +25,7 @@ assert.ok(html.includes('class="panel-close calendar-settings"'),"calendar must 
 assert.ok(html.includes('class="today-button status-launch"'),"calendar must open the status popup");
 assert.ok(html.includes('class="dashboard-sheet"'),"status summary must be a bottom sheet");
 assert.ok(html.includes('data-open-page="settings"'));
-assert.ok(html.includes('class="page app-panel calendar-panel"'));
+assert.ok(html.includes('calendar-panel" id="calendar"'));
 assert.ok(html.includes('class="settings-card color-studio"'));
 assert.equal((html.match(/data-color-key=/g)||[]).length,8);
 assert.equal((html.match(/data-palette=/g)||[]).length,5);
@@ -34,7 +34,7 @@ assert.ok(app.includes('version:4'));
 assert.ok(app.includes('"dawami-cycle-prefs"'));
 assert.ok(app.includes('"dawami-github-schedule"'));
 assert.ok(html.includes("dawami-v9-1.css?v=9.1"));
-assert.ok(html.includes("dawami-v9-1.js?v=9.0"));
+assert.ok(html.includes("dawami-v9-1.js?v=9.1"));
 
 const manifest=JSON.parse(fs.readFileSync("manifest.webmanifest","utf8"));
 assert.equal(manifest.dir,"rtl");
