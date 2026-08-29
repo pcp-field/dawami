@@ -3,110 +3,132 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080b11">
-<meta name="description" content="دوامي — اعرف متى تداوم وكم باقي على إجازتك">
+<meta name="theme-color" content="#071019">
+<meta name="description" content="دوامي — دوامك وإجازتك بوضوح">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest?v=8.0">
-<link rel="icon" href="icon.svg?v=8.0" type="image/svg+xml">
-<link rel="stylesheet" href="dawami-v8.css?v=8.0">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest?v=9.0">
+<link rel="icon" href="icon.svg?v=9.0" type="image/svg+xml">
+<link rel="stylesheet" href="dawami-v9.css?v=9.0">
 <title>دوامي — دوامك وإجازتك بوضوح</title>
 </head>
 <body>
-<main class="shell">
-<header class="top">
-  <div class="logo"><img class="logo-mark" src="icon.svg?v=8.0" alt="شعار دوامي"><span><b>دوامي</b><small>دوامك وإجازتك بوضوح</small></span></div>
-  <div class="top-actions"><button class="icon theme-icon" id="themeBtn" aria-label="تغيير المظهر"><span aria-hidden="true"></span></button><button class="icon settings-icon" data-open-page="settings" aria-label="الإعدادات"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8.2 4.9v-2.2l-2.1-.7a7.3 7.3 0 0 0-.6-1.4l1-2-1.6-1.6-2 1a7.3 7.3 0 0 0-1.4-.6l-.7-2.1h-2.2l-.7 2.1a7.3 7.3 0 0 0-1.4.6l-2-1-1.6 1.6 1 2a7.3 7.3 0 0 0-.6 1.4l-2.1.7v2.2l2.1.7c.1.5.3 1 .6 1.4l-1 2 1.6 1.6 2-1c.4.3.9.5 1.4.6l.7 2.1h2.2l.7-2.1c.5-.1 1-.3 1.4-.6l2 1 1.6-1.6-1-2c.3-.4.5-.9.6-1.4l2.1-.7Z"/></svg></button></div>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<main class="app-shell">
+<header class="app-header">
+  <a class="brand" href="#home" data-open-page="home" aria-label="دوامي">
+    <img class="brand-mark logo-mark" src="icon.svg?v=9.0" alt="">
+    <span><b>دوامي</b><small>وقتك قدامك بوضوح</small></span>
+  </a>
+  <div class="header-actions">
+    <button class="round-button theme-button theme-icon" id="themeBtn" aria-label="تغيير المظهر"><span aria-hidden="true"></span></button>
+    <button class="round-button settings-button settings-icon" data-open-page="settings" aria-label="الإعدادات"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8.2 4.9v-2.2l-2.1-.7a7.3 7.3 0 0 0-.6-1.4l1-2-1.6-1.6-2 1a7.3 7.3 0 0 0-1.4-.6l-.7-2.1h-2.2l-.7 2.1a7.3 7.3 0 0 0-1.4.6l-2-1-1.6 1.6 1 2a7.3 7.3 0 0 0-.6 1.4l-2.1.7v2.2l2.1.7c.1.5.3 1 .6 1.4l-1 2 1.6 1.6 2-1c.4.3.9.5 1.4.6l.7 2.1h2.2l.7-2.1c.5-.1 1-.3 1.4-.6l2 1 1.6-1.6-1-2c.3-.4.5-.9.6-1.4l2.1-.7Z"/></svg></button>
+  </div>
 </header>
 
-<section class="page active" id="home">
-  <article class="status off" id="statusCard">
-    <div class="status-copy">
-      <span class="label"><i></i> حالتك الحين</span>
+<section class="page active home-page" id="home">
+  <article class="status status-hero off" id="statusCard">
+    <div class="status-main">
+      <span class="eyebrow"><i></i> حالتك الحين</span>
       <h1 id="statusTitle">جاري حساب دوامك…</h1>
       <p id="statusSub">لحظة واحدة</p>
-      <div class="count"><small id="countLabel">كم باقي؟</small><div class="countdown-parts" id="countdown" aria-live="polite"><span><b>00</b><small>يوم</small></span><i>:</i><span><b>00</b><small>ساعة</small></span><i>:</i><span><b>00</b><small>دقيقة</small></span></div></div>
+      <div class="timer-block">
+        <small id="countLabel">كم باقي؟</small>
+        <div class="countdown-parts" id="countdown" aria-live="polite"><span><b>00</b><small>يوم</small></span><i>:</i><span><b>00</b><small>ساعة</small></span><i>:</i><span><b>00</b><small>دقيقة</small></span></div>
+      </div>
     </div>
-    <div class="ring" id="cycleRing"><div><b id="cycleDay">—</b><small id="cycleLength">من — يوم</small></div></div>
+    <div class="cycle-orbit ring" id="cycleRing"><div><b id="cycleDay">—</b><small id="cycleLength">من — يوم</small></div></div>
   </article>
 
-  <div class="quick">
-    <article class="yellow"><small>الدوام المتبقي</small><b id="daysToLeave">—</b><span id="leaveHint">يوم دوام</span></article>
-    <article><small>الإجازة القادمة</small><b id="leaveStartShort">—</b><span id="leaveStartFull">—</span></article>
-    <article class="blue"><small>ترجع الدوام</small><b id="returnShort">—</b><span id="returnFull">—</span></article>
-    <article class="green"><small>دوام هذا الشهر</small><b id="monthWorkDays">—</b><span id="monthWorkHint">محسوب من جدولك</span></article>
-  </div>
+  <section class="summary-grid" aria-label="ملخص جدولك">
+    <article class="summary-card work-summary"><span class="summary-icon">↗</span><small>الدوام المتبقي</small><b id="daysToLeave">—</b><p id="leaveHint">يوم دوام</p></article>
+    <article class="summary-card leave-summary"><span class="summary-icon">✦</span><small>الإجازة القادمة</small><b id="leaveStartShort">—</b><p id="leaveStartFull">—</p></article>
+    <article class="summary-card return-summary"><span class="summary-icon">↩</span><small>ترجع الدوام</small><b id="returnShort">—</b><p id="returnFull">—</p></article>
+    <article class="summary-card month-summary"><span class="summary-icon">◫</span><small>دوام هذا الشهر</small><b id="monthWorkDays">—</b><p id="monthWorkHint">محسوب من جدولك</p></article>
+  </section>
 
-  <article class="next-days">
-    <div class="section-head"><h2>الأيام الجاية</h2><button class="text-btn" data-open-page="calendar">شوف التقويم</button></div>
-    <div class="strip" id="nextStrip"></div>
+  <article class="upcoming-panel">
+    <div class="section-heading"><div><small>نظرة سريعة</small><h2>الأيام الجاية</h2></div><button class="open-calendar" data-open-page="calendar"><span>التقويم كامل</span><b>←</b></button></div>
+    <div class="upcoming-rail strip" id="nextStrip"></div>
   </article>
+
+  <button class="calendar-cta" data-open-page="calendar"><span><b>افتح التقويم</b><small>شوف الشهر وعدّل أي يوم</small></span><i>←</i></button>
 </section>
 
-<section class="page app-panel" id="calendar" aria-label="التقويم">
-  <article class="card calendar-card">
-    <div class="cal-top">
-      <div class="month-switch"><button id="nextMonth">‹</button><b id="monthLabel">—</b><button id="prevMonth">›</button></div>
-      <button class="today-btn" id="goToday">اليوم</button>
-      <button class="panel-back" type="button" data-open-page="home" aria-label="إغلاق التقويم">×</button>
-    </div>
+<section class="page app-panel calendar-panel" id="calendar" aria-label="التقويم">
+  <header class="panel-top">
+    <button class="panel-close" type="button" data-open-page="home" aria-label="إغلاق التقويم">×</button>
+    <div class="month-switch"><button id="nextMonth" aria-label="الشهر التالي">‹</button><b id="monthLabel">—</b><button id="prevMonth" aria-label="الشهر السابق">›</button></div>
+    <button class="today-button today-btn" id="goToday">اليوم</button>
+  </header>
+  <div class="calendar-surface">
     <div class="weekdays"><span>الاثنين</span><span>الثلاثاء</span><span>الأربعاء</span><span>الخميس</span><span>الجمعة</span><span>السبت</span><span>الأحد</span></div>
-    <div class="calendar" id="calendarGrid"></div>
-    <div class="legend"><span><i class="l-work"></i>دوام</span><span><i class="l-off"></i>إجازة</span><span><i class="l-extra"></i>إكسترا دي</span><span><i class="l-leave"></i>سنوية</span><span><i class="l-sick"></i>مرضية</span><span><i class="l-training"></i>تدريب</span><span class="note-key">● ملاحظة</span><span><i class="l-official"></i>عطلة رسمية</span></div>
-    <small class="holiday-sync" id="holidaySync">يتم تحديث عطلات سلطنة عُمان تلقائيًا</small>
-  </article>
+    <div class="calendar-grid calendar" id="calendarGrid"></div>
+    <div class="calendar-legend legend"><span><i class="l-work"></i>دوام</span><span><i class="l-off"></i>إجازة</span><span><i class="l-extra"></i>إكسترا</span><span><i class="l-leave"></i>سنوية</span><span><i class="l-sick"></i>مرضية</span><span><i class="l-training"></i>تدريب</span><span><i class="l-official"></i>رسمية</span><span class="note-key">● ملاحظة</span></div>
+    <small class="holiday-sync" id="holidaySync">تتحدث عطلات سلطنة عُمان تلقائيًا</small>
+  </div>
 </section>
 
-<section class="page app-panel" id="settings">
-  <div class="settings-panel-head"><div><h1>الإعدادات</h1><p>غير الأساسيات فقط، والباقي نحسبه لك.</p></div><button class="panel-back" type="button" data-open-page="home" aria-label="إغلاق الإعدادات">×</button></div>
+<section class="page app-panel settings-panel" id="settings">
+  <header class="settings-top"><div><small>خصصه على كيفك</small><h1>الإعدادات</h1></div><button class="panel-close" type="button" data-open-page="home" aria-label="إغلاق الإعدادات">×</button></header>
   <div class="settings-list">
-    <article class="setting-card profile-settings">
-      <h2>حسابك والمنطقة</h2><p>تُستخدم لحساب الوقت والتاريخ عندك بدقة.</p>
+    <article class="settings-card identity-card">
+      <div class="card-title"><span>01</span><div><h2>حسابك</h2><p>الاسم والمنطقة الزمنية</p></div></div>
       <label class="field"><span>اسمك</span><input id="settingsName" placeholder="اسمك (اختياري)" autocomplete="name"></label>
       <label class="field"><span>المنطقة الزمنية</span><select id="timezoneSelect"><option value="Asia/Muscat">سلطنة عُمان — مسقط</option><option value="Asia/Dubai">الإمارات</option><option value="Asia/Riyadh">السعودية</option><option value="Asia/Qatar">قطر</option><option value="Asia/Kuwait">الكويت</option><option value="Asia/Bahrain">البحرين</option></select></label>
     </article>
 
-    <article class="setting-card">
-      <h2>نمط دوامك</h2><p>اختر عدد أيام الدوام والإجازة.</p>
+    <article class="settings-card">
+      <div class="card-title"><span>02</span><div><h2>جدول دوامك</h2><p>حدد الدورة وأول يوم</p></div></div>
       <label class="field"><span>النمط</span><select id="patternSelect"><option value="14-14">14 يوم دوام / 14 يوم إجازة</option><option value="28-14">28 يوم دوام / 14 يوم إجازة</option><option value="7-7">7 أيام دوام / 7 أيام إجازة</option><option value="4-4">4 أيام دوام / 4 أيام إجازة</option><option value="2d2n4">يومان نهاري / يومان ليلي / 4 أيام إجازة</option></select></label>
-      <label class="field"><span>أول يوم في دورة الدوام</span><input id="anchorDate" type="date"></label>
+      <label class="field"><span>أول يوم في الدورة</span><input id="anchorDate" type="date"></label>
       <div class="cycle-preview" id="cyclePreview"></div>
     </article>
 
-    <article class="setting-card">
-      <h2>وقت الدوام</h2><p>الوقت المعتاد لبداية ونهاية دوامك.</p>
+    <article class="settings-card">
+      <div class="card-title"><span>03</span><div><h2>وقت الدوام</h2><p>البداية والنهاية المعتادة</p></div></div>
       <div class="two"><label class="field"><span>يبدأ</span><input id="workStart" type="time"></label><label class="field"><span>ينتهي</span><input id="workEnd" type="time"></label></div>
       <div id="nightTimes" class="two" hidden><label class="field"><span>الليلي يبدأ</span><input id="nightStart" type="time"></label><label class="field"><span>الليلي ينتهي</span><input id="nightEnd" type="time"></label></div>
-      <button class="primary full" id="saveSettings">احفظ التغييرات</button>
+      <button class="primary full" id="saveSettings">حفظ جدول الدوام</button>
     </article>
 
-
-    <article class="setting-card palette-settings">
-      <div class="setting-heading"><div><h2>ألوان جدولك</h2><p>اختر مظهرًا متناسقًا للدوام والإجازة.</p></div><span class="pro-badge">يحفظ تلقائيًا</span></div>
-      <div class="palette-grid" id="paletteGrid" role="group" aria-label="ألوان الدوام والإجازة">
-        <button class="palette-choice" type="button" data-palette="gold" style="--pw:#FFD45A;--pr:#E9EEF5"><i><span></span><span></span></i><b>ذهبي</b></button>
-        <button class="palette-choice" type="button" data-palette="ocean" style="--pw:#6CC8FF;--pr:#D9EAF7"><i><span></span><span></span></i><b>محيط</b></button>
-        <button class="palette-choice" type="button" data-palette="mint" style="--pw:#67D7B0;--pr:#DBF0E8"><i><span></span><span></span></i><b>نعناع</b></button>
-        <button class="palette-choice" type="button" data-palette="coral" style="--pw:#FF9B7B;--pr:#F4E1DE"><i><span></span><span></span></i><b>مرجان</b></button>
-        <button class="palette-choice" type="button" data-palette="lavender" style="--pw:#B7A1FF;--pr:#E8E3F8"><i><span></span><span></span></i><b>لافندر</b></button>
-        <button class="palette-choice" type="button" data-palette="sand" style="--pw:#E6C688;--pr:#ECE6DA"><i><span></span><span></span></i><b>رملي</b></button>
+    <article class="settings-card color-studio">
+      <div class="card-title"><span>04</span><div><h2>استديو الألوان</h2><p>كل لون في التطبيق تحت تحكمك</p></div></div>
+      <div class="palette-strip" role="group" aria-label="مجموعات ألوان جاهزة">
+        <button type="button" data-palette="gold" style="--p1:#F6C453;--p2:#64748B;--p3:#3B82F6"><i></i><b>ذهبي</b></button>
+        <button type="button" data-palette="ocean" style="--p1:#55BDEB;--p2:#4E7185;--p3:#2585D9"><i></i><b>محيط</b></button>
+        <button type="button" data-palette="mint" style="--p1:#52C99B;--p2:#5B746B;--p3:#18A879"><i></i><b>نعناع</b></button>
+        <button type="button" data-palette="coral" style="--p1:#FF9376;--p2:#82645E;--p3:#F26A4B"><i></i><b>مرجان</b></button>
+        <button type="button" data-palette="violet" style="--p1:#AD91F7;--p2:#716987;--p3:#7C5CE4"><i></i><b>بنفسجي</b></button>
       </div>
-      <small class="palette-note">يتكيّف لون الإجازة تلقائيًا مع الوضع الفاتح والداكن.</small>
+      <div class="color-grid">
+        <label><input type="color" data-color-key="accent" id="colorAccent"><span><i style="--dot:var(--accent)"></i>لون التطبيق</span></label>
+        <label><input type="color" data-color-key="work" id="colorWork"><span><i style="--dot:var(--work-color)"></i>الدوام</span></label>
+        <label><input type="color" data-color-key="off" id="colorOff"><span><i style="--dot:var(--off-color)"></i>الإجازة</span></label>
+        <label><input type="color" data-color-key="extra" id="colorExtra"><span><i style="--dot:var(--extra-color)"></i>إكسترا دي</span></label>
+        <label><input type="color" data-color-key="annual" id="colorAnnual"><span><i style="--dot:var(--annual-color)"></i>السنوية</span></label>
+        <label><input type="color" data-color-key="sick" id="colorSick"><span><i style="--dot:var(--sick-color)"></i>المرضية</span></label>
+        <label><input type="color" data-color-key="training" id="colorTraining"><span><i style="--dot:var(--training-color)"></i>التدريب</span></label>
+        <label><input type="color" data-color-key="official" id="colorOfficial"><span><i style="--dot:var(--official-color)"></i>العطلة الرسمية</span></label>
+      </div>
+      <div class="color-preview" aria-hidden="true"><span class="preview-work">دوام</span><span class="preview-off">إجازة</span><span class="preview-extra">إكسترا</span><span class="preview-annual">سنوية</span></div>
+      <button class="ghost full" id="resetColors">رجّع الألوان الأصلية</button>
     </article>
 
-    <article class="setting-card">
-      <div class="row"><div><b>الوضع الداكن</b><small>غير شكل الموقع</small></div><button class="switch" id="darkSwitch"><i></i></button></div>
-      <div class="row"><div><b>تنبيه قبل الدوام</b><small id="notifyText">غير مفعل</small></div><button class="switch" id="notifySwitch"><i></i></button></div>
+    <article class="settings-card">
+      <div class="card-title"><span>05</span><div><h2>المظهر والتنبيهات</h2><p>الوضع والتنبيه قبل الدوام</p></div></div>
+      <div class="setting-row"><div><b>الوضع الداكن</b><small>بدّل بين الداكن والفاتح</small></div><button class="switch" id="darkSwitch" aria-label="الوضع الداكن"><i></i></button></div>
+      <div class="setting-row"><div><b>تنبيه قبل الدوام</b><small id="notifyText">غير مفعل</small></div><button class="switch" id="notifySwitch" aria-label="التنبيهات"><i></i></button></div>
       <label class="field reminder-field"><span>وقت التنبيه</span><select id="reminderBefore"><option value="30">قبل 30 دقيقة</option><option value="60">قبل ساعة</option><option value="120">قبل ساعتين</option><option value="720">قبل 12 ساعة</option><option value="1440">قبل يوم</option></select></label>
-      <details><summary>البيانات والتحديث</summary><div class="details-body"><button class="secondary update-now" id="forceUpdate">تحديث الموقع الآن</button><button class="secondary" id="exportData">تحميل نسخة من بياناتي</button><label class="secondary" style="text-align:center">استعادة نسخة<input id="importData" type="file" accept="application/json" hidden></label><button class="secondary" id="showSetup">إعادة ضبط نمط الدوام</button></div></details>
+      <details><summary>البيانات والتحديث</summary><div class="details-body"><button class="ghost" id="forceUpdate">تحديث الموقع الآن</button><button class="ghost" id="exportData">تحميل نسخة من بياناتي</button><label class="ghost upload-label">استعادة نسخة<input id="importData" type="file" accept="application/json" hidden></label><button class="ghost" id="showSetup">إعادة ضبط نمط الدوام</button></div></details>
     </article>
   </div>
 </section>
 </main>
 
-
 <div class="modal" id="setupModal">
   <div class="dialog">
-    <div class="setup-logo logo"><img class="logo-mark" src="icon.svg?v=8.0" alt="شعار دوامي"><span><b>خلنا نضبط دوامك</b><small>مرة وحدة وباقي الشهور تنحسب تلقائيًا</small></span></div>
+    <div class="setup-logo logo"><img class="logo-mark" src="icon.svg?v=9.0" alt="شعار دوامي"><span><b>خلنا نضبط دوامك</b><small>مرة وحدة وباقي الشهور تنحسب تلقائيًا</small></span></div>
     <label class="field"><span>اسمك (اختياري)</span><input id="setupName" placeholder="مثال: أحمد"></label>
     <label class="field"><span>اختر نمط دوامك</span></label>
     <div class="pattern-grid" id="setupPatterns"></div>
@@ -140,8 +162,9 @@
   </div>
 </div>
 
+
 <div class="toast" id="toast"></div>
-<script src="core.js?v=8.0"></script>
-<script src="dawami-v8.js?v=8.0"></script>
+<script src="core.js?v=9.0"></script>
+<script src="dawami-v9.js?v=9.0"></script>
 </body>
 </html>
