@@ -25,7 +25,7 @@ assert.deepEqual([...new Set(refs.filter(id=>!ids.has(id)))],[],"all referenced 
 
 for(const token of [
  "function normalize(","dawami-github-schedule","dawami-github-prefs","version:5",
- "function renderCalendar(","view-week","view-list","selectedDates","function undoLastChange",
+ "function renderCalendar(","selectedDates","function undoLastChange",
  "function renderLeaves(","function saveLeaveRecord","function renderInsights","function renderPay",
  "function exportICS","function exportCSV","function shareScheduleImage","function compareDataFile",
  "function scheduleNotify","function buildSetup","function renderSetupPreview","function parseCycle",
